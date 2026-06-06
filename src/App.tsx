@@ -1,0 +1,186 @@
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronRight, Home, Map, Target, ZoomIn, ShieldCheck, Globe, Combine, Activity, Box, MapPin, Link2, PencilLine, Languages } from 'lucide-react';
+import LandingPage from './pages/LandingPage';
+import TopologyBasics from './pages/TopologyBasics';
+import SetConcepts from './pages/SetConcepts';
+import NeighborhoodsAndBases from './pages/NeighborhoodsAndBases';
+import DensityAndSeparation from './pages/DensityAndSeparation';
+import InducedTopology from './pages/InducedTopology';
+import ProductTopology from './pages/ProductTopology';
+import ContinuityAndLimits from './pages/ContinuityAndLimits';
+import CompactSpaces from './pages/CompactSpaces';
+import LocallyCompactSpaces from './pages/LocallyCompactSpaces';
+import ConnectedSpacesPage from './pages/ConnectedSpacesPage';
+import PathConnectednessPage from './pages/PathConnectednessPage';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
+
+// Component to handle scroll reset on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+};
+
+const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const { language, setLanguage, t } = useLanguage();
+  
+  const isActive = (path: string) => location.pathname === path;
+
+  const navLinks = [
+    { path: '/', label: t('nav.home'), icon: <Home className="w-4 h-4" /> },
+    { path: '/topology-introduction', label: t('nav.intro'), icon: <Map className="w-4 h-4" /> },
+    { path: '/interior-closure-boundary', label: t('nav.concepts'), icon: <Target className="w-4 h-4" /> },
+    { path: '/neighborhoods-and-bases', label: t('nav.bases'), icon: <ZoomIn className="w-4 h-4" /> },
+    { path: '/density-and-separation', label: t('nav.density'), icon: <ShieldCheck className="w-4 h-4" /> },
+    { path: '/induced-topology', label: t('nav.induced'), icon: <Globe className="w-4 h-4" /> },
+    { path: '/product-topology', label: t('nav.product'), icon: <Combine className="w-4 h-4" /> },
+    { path: '/continuity-and-limits', label: t('nav.continuity'), icon: <Activity className="w-4 h-4" /> },
+    { path: '/compact-spaces', label: t('nav.compact'), icon: <Box className="w-4 h-4" /> },
+    { path: '/locally-compact-spaces', label: t('nav.locallyCompact'), icon: <MapPin className="w-4 h-4" /> },
+    { path: '/connected-spaces', label: t('nav.connected'), icon: <Link2 className="w-4 h-4" /> },
+    { path: '/path-connectedness', label: t('nav.pathConnected'), icon: <PencilLine className="w-4 h-4" /> },
+  ];
+
+  return (
+    <header className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
+      <nav className="mx-auto max-w-7xl px-6 lg:px-8 h-16 flex items-center justify-between">
+        <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+            τ
+          </div>
+          <span className="font-bold text-slate-900 tracking-tight">TopoLearn</span>
+        </Link>
+
+        <div className="flex items-center gap-2">
+          {/* Language Toggle */}
+          <button 
+            onClick={() => setLanguage(language === 'EN' ? 'FR' : 'EN')}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-100 text-slate-600 hover:bg-white hover:shadow-sm transition-all"
+          >
+            <Languages className="w-4 h-4 text-indigo-500" />
+            <span className="text-[10px] font-bold uppercase tracking-widest">{language}</span>
+          </button>
+
+          {/* Burger Menu Button */}
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 hover:bg-slate-100 rounded-xl transition-colors text-slate-600"
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Expandable Dropdown Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-slate-900/20 backdrop-blur-sm z-[90]"
+            />
+            
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="absolute top-full right-4 w-80 bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-4 z-[100] mt-2 overflow-hidden"
+            >
+              <div className="flex flex-col gap-1 overflow-y-auto max-h-[80vh] custom-scrollbar">
+                <p className="px-4 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t('nav.curriculum')}</p>
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all ${
+                      isActive(link.path) 
+                        ? 'bg-blue-50 text-blue-600' 
+                        : 'hover:bg-slate-50 text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2 rounded-lg ${isActive(link.path) ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>
+                        {link.icon}
+                      </div>
+                      <span className="font-bold text-xs">{link.label}</span>
+                    </div>
+                    {isActive(link.path) && <ChevronRight className="w-4 h-4" />}
+                  </Link>
+                ))}
+              </div>
+              
+              <div className="mt-4 pt-4 border-t border-slate-50 px-4 pb-2 text-center">
+                <p className="text-[10px] text-slate-400 italic leading-relaxed">
+                   {t('nav.comingSoon')}
+                </p>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+};
+
+function App() {
+  return (
+    <LanguageProvider>
+      <Router>
+        <ScrollToTop />
+        <div className="min-h-screen bg-white selection:bg-blue-100 selection:text-blue-900">
+          <Navbar />
+
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/topology-introduction" element={<TopologyBasics />} />
+            <Route path="/interior-closure-boundary" element={<SetConcepts />} />
+            <Route path="/neighborhoods-and-bases" element={<NeighborhoodsAndBases />} />
+            <Route path="/density-and-separation" element={<DensityAndSeparation />} />
+            <Route path="/induced-topology" element={<InducedTopology />} />
+            <Route path="/product-topology" element={<ProductTopology />} />
+            <Route path="/continuity-and-limits" element={<ContinuityAndLimits />} />
+            <Route path="/compact-spaces" element={<CompactSpaces />} />
+            <Route path="/locally-compact-spaces" element={<LocallyCompactSpaces />} />
+            <Route path="/connected-spaces" element={<ConnectedSpacesPage />} />
+            <Route path="/path-connectedness" element={<PathConnectednessPage />} />
+          </Routes>
+
+          <footer className="bg-slate-900 py-12 px-6">
+            <div className="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left relative z-10">
+              <div>
+                <div className="flex items-center gap-2 justify-center md:justify-start mb-4">
+                  <div className="w-6 h-6 bg-blue-500 rounded flex items-center justify-center text-white font-bold text-sm">
+                    τ
+                  </div>
+                  <span className="font-bold text-white tracking-tight">TopoLearn</span>
+                </div>
+                <p className="text-slate-400 text-sm max-w-xs italic">
+                  A modern interactive guide to understanding the abstract beauty of Point-Set Topology.
+                </p>
+              </div>
+              <div className="text-slate-500 text-xs">
+                © 2026 TopoLearn Project. Built for educational excellence.
+              </div>
+            </div>
+          </footer>
+        </div>
+      </Router>
+    </LanguageProvider>
+  );
+}
+
+export default App;
