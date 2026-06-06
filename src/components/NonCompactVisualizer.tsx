@@ -11,24 +11,24 @@ const NonCompactVisualizer: React.FC = () => {
   const content = {
     EN: {
       title: "Interactive: Why ]0, 1] is NOT Compact",
-      subtitle: "We prove non-compactness by finding an open cover that admits no finite subcover. Consider the family Oₙ = ]1/n, 2[ for n \u2208 N*.",
+      subtitle: "We prove non-compactness by finding an open cover that admits no finite subcover. Consider the family O\u2099 = ]1/n, 2[ for n \u2208 N*.",
       radiusLabel: "Max Index N in Subcover:",
       currentLabel: "Current Subcover",
       currentDesc: "As N increases, we get closer to 0, but we never reach it.",
       targetLabel: "Target A = ]0, 1]",
-      unionLabel: "Union of finite Oₖ",
+      unionLabel: "Union of finite O\u2096",
       gapLabel: "GAP",
       verdictTitle: "Uncovered Points Detected",
       verdictDesc: "For any finite N you choose, the union is just ]1/N, 2[. This completely misses points close to zero, like 1/2N. Because an uncovered gap will ALWAYS exist for any finite N, no finite subcover can exist. Thus, ]0, 1] is NOT compact."
     },
     FR: {
       title: "Interactif : Pourquoi ]0, 1] n'est PAS compact",
-      subtitle: "Nous prouvons la non-compacité en trouvant un recouvrement ouvert qui n'admet aucun sous-recouvrement fini. Considérons la famille Oₙ = ]1/n, 2[ pour n \u2208 N*.",
+      subtitle: "Nous prouvons la non-compacité en trouvant un recouvrement ouvert qui n'admet aucun sous-recouvrement fini. Considérons la famille O\u2099 = ]1/n, 2[ pour n \u2208 N*.",
       radiusLabel: "Indice Max N du sous-recouvrement :",
       currentLabel: "Sous-recouvrement actuel",
       currentDesc: "À mesure que N augmente, on se rapproche de 0, mais sans jamais l'atteindre.",
       targetLabel: "Cible A = ]0, 1]",
-      unionLabel: "Réunion des Oₖ finis",
+      unionLabel: "Réunion des O\u2096 finis",
       gapLabel: "VIDE",
       verdictTitle: "Points non recouverts détectés",
       verdictDesc: "Pour tout N fini choisi, la réunion est simplement ]1/N, 2[. Cela manque complètement les points proches de zéro, comme 1/2N. Puisqu'un vide non recouvert existera TOUJOURS pour tout N fini, aucun sous-recouvrement fini n'existe. Ainsi, ]0, 1] n'est PAS compact."
@@ -42,7 +42,7 @@ const NonCompactVisualizer: React.FC = () => {
       <div className="mx-auto max-w-5xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">{curr.title}</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto">
+          <p className="text-slate-600 max-w-2xl mx-auto text-sm">
             {curr.subtitle}
           </p>
         </div>
@@ -124,7 +124,7 @@ const NonCompactVisualizer: React.FC = () => {
                        <div>
                           <h4 className="font-bold text-red-900 text-sm mb-2 uppercase tracking-widest">{curr.verdictTitle}</h4>
                           <p className="text-xs text-red-800 leading-relaxed italic">
-                            {curr.verdictDesc}
+                            For any finite <InlineMath math="N" /> you choose, the union is just <InlineMath math={`]1/${n}, 2[`} />. {curr.verdictDesc.split('.').slice(1).join('.')}
                           </p>
                        </div>
                     </div>

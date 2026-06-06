@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldCheck, AlertCircle, Info, ZapOff } from 'lucide-react';
+import { InlineMath } from './Math';
 import { useLanguage } from '../context/LanguageContext';
 
 const InfiniteProductSimulator: React.FC = () => {
@@ -140,7 +141,11 @@ const InfiniteProductSimulator: React.FC = () => {
                           <div className="flex gap-4">
                              <ZapOff className="w-5 h-5 text-amber-400 shrink-0" />
                              <p className="text-xs text-slate-300 leading-relaxed">
-                               {curr.info2}
+                               {language === 'EN' ? (
+                                 <>A set where every dimension is restricted (like <InlineMath math="\prod ]0, 1[" />) is open in the Box Topology, but NOT here!</>
+                               ) : (
+                                 <>Un ensemble où chaque dimension est restreinte (comme <InlineMath math="\prod ]0, 1[" />) est ouvert dans la Box Topology, mais PAS ici !</>
+                               )}
                              </p>
                           </div>
                        </div>

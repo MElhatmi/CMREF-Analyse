@@ -80,7 +80,7 @@ const RationalDensityVisualizer: React.FC = () => {
                <div className="p-5 bg-blue-50 rounded-2xl border border-blue-100">
                   <p className="text-[10px] text-blue-400 font-bold uppercase mb-2">{curr.targetLabel}</p>
                   <div className="flex justify-between items-baseline">
-                    <InlineMath math="\pi \approx" />
+                    <InlineMath math="\\pi \\approx" />
                     <span className="font-mono text-lg text-blue-900">3.141592...</span>
                   </div>
                </div>
@@ -110,7 +110,7 @@ const RationalDensityVisualizer: React.FC = () => {
                   <div className="absolute left-1/2 top-0 -translate-x-1/2 flex flex-col items-center">
                     <div className="h-20 w-px bg-blue-500/50 -translate-y-10" />
                     <div className="w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.8)] -translate-y-2" />
-                    <span className="mt-4 text-xl font-serif italic text-blue-400"><InlineMath math="\pi" /></span>
+                    <span className="mt-4 text-xl font-serif italic text-blue-400"><InlineMath math="\\pi" /></span>
                   </div>
 
                   <motion.div

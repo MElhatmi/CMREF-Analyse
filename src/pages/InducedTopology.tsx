@@ -30,7 +30,7 @@ const InducedTopology: React.FC = () => {
       <InducedExamples />
       
       <NextLesson 
-        to="/product-topology"
+        to="/topology/product-topology"
         chapter={6}
         title={next.title}
         description={next.desc}

@@ -32,7 +32,7 @@ const TopologyBasics: React.FC = () => {
       <Examples />
       
       <NextLesson 
-        to="/interior-closure-boundary"
+        to="/topology/interior-closure-boundary"
         chapter={2}
         title={next.title}
         description={next.desc}

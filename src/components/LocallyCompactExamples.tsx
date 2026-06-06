@@ -2,7 +2,10 @@ import React from 'react';
 import { InlineMath } from './Math';
 import { CheckCircle2, XCircle, Sparkles } from 'lucide-react';
 
+import { useLanguage } from '../context/LanguageContext';
+
 const LocallyCompactExamples: React.FC = () => {
+  const { language } = useLanguage();
   const examples = [
     {
       title: "Compact implies Locally Compact",
@@ -10,23 +13,23 @@ const LocallyCompactExamples: React.FC = () => {
       icon: <Sparkles className="text-amber-500" />,
       color: "border-amber-100 bg-amber-50/30",
       explanation: "If the entire universe E is compact, then for any point x, the whole space E itself acts as a valid compact neighborhood.",
-      logic: "x \\in E \\subset E \\quad \\text{(E is open and compact)}"
+      logic: language === 'EN' ? "x \\in E \\subset E \\quad \\text{(E is open and compact)}" : "x \\in E \\subset E \\quad \\text{(E est ouvert et compact)}"
     },
     {
-      title: "The Real Line \\mathbb{R}",
-      status: "Unbounded Success",
+      title: language === 'EN' ? "The Real Line \\mathbb{R}" : "La droite réelle \\mathbb{R}",
+      status: language === 'EN' ? "Unbounded Success" : "Succès non borné",
       icon: <CheckCircle2 className="text-emerald-500" />,
       color: "border-emerald-100 bg-emerald-50/30",
-      explanation: "R stretches to infinity, but every point x has a closed interval [x-1, x+1] around it. This set is closed and bounded.",
-      logic: "V = [x-1, x+1] \\quad \\text{is compact by Borel-Lebesgue.}"
+      explanation: language === 'EN' ? "R stretches to infinity, but every point x has a closed interval [x-1, x+1] around it. This set is closed and bounded." : "R s'étend à l'infini, mais chaque point x possède un intervalle fermé [x-1, x+1]. Cet ensemble est fermé et borné.",
+      logic: language === 'EN' ? "V = [x-1, x+1] \\quad \\text{is compact by Borel-Lebesgue.}" : "V = [x-1, x+1] \\quad \\text{est compact par Borel-Lebesgue.}"
     },
     {
-      title: "The Rationals \\mathbb{Q}",
-      status: "Critical Failure",
+      title: language === 'EN' ? "The Rationals \\mathbb{Q}" : "Les rationnels \\mathbb{Q}",
+      status: language === 'EN' ? "Critical Failure" : "Échec critique",
       icon: <XCircle className="text-red-500" />,
       color: "border-red-100 bg-red-50/30",
-      explanation: "Try drawing a 'closed interval' in Q. It is full of holes where irrationals like \\sqrt{2} should be. Limit points are missing.",
-      logic: "\\text{No neighborhood in } \\mathbb{Q} \\text{ can be truly compact.}"
+      explanation: language === 'EN' ? "Try drawing a 'closed interval' in Q. It is full of holes where irrationals like \\sqrt{2} should be. Limit points are missing." : "Essayez de tracer un « intervalle fermé » dans Q. Il est plein de trous là où les irrationnels comme \\sqrt{2} devraient être.",
+      logic: language === 'EN' ? "\\text{No neighborhood in } \\mathbb{Q} \\text{ can be truly compact.}" : "\\text{Aucun voisinage dans } \\mathbb{Q} \\text{ ne peut être vraiment compact.}"
     }
   ];
 

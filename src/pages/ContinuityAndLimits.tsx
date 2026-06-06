@@ -32,7 +32,7 @@ const ContinuityAndLimits: React.FC = () => {
       <LimitVisualizer />
       
       <NextLesson 
-        to="/compact-spaces"
+        to="/topology/compact-spaces"
         chapter={8}
         title={next.title}
         description={next.desc}

@@ -56,7 +56,7 @@ const GlobalContinuityDef: React.FC = () => {
 
           <div className="bg-blue-50/50 p-8 rounded-3xl border border-blue-100 mb-12 shadow-inner">
              <h4 className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-4">{curr.defTitle}</h4>
-             <BlockMath math="\forall O \in \mathcal{T}_F, \quad f^{-1}(O) \in \mathcal{T}_E" />
+             <BlockMath math="\\forall O \\in \\mathcal{T}_F, \\quad f^{-1}(O) \\in \\mathcal{T}_E" />
              <p className="mt-4 text-sm text-slate-600 italic text-center">
                {curr.defQuote}
              </p>
@@ -85,7 +85,7 @@ const GlobalContinuityDef: React.FC = () => {
                 <p className="font-bold text-slate-900 text-sm mb-3">{curr.rule2Title}</p>
                 <p className="text-xs text-slate-600 leading-relaxed mb-4 italic">{curr.rule2Quote}</p>
                 <div className="bg-white p-3 rounded-xl border border-slate-200 text-center">
-                  <InlineMath math="f(\overline{A}) \subset \overline{f(A)} \text{ pour tout } A \subset E" />
+                  <InlineMath math="f(\\overline{A}) \\subset \\overline{f(A)} \\text{ pour tout } A \\subset E" />
                 </div>
              </div>
           </div>

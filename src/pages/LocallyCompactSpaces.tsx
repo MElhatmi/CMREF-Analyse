@@ -30,7 +30,7 @@ const LocallyCompactSpaces: React.FC = () => {
       <LocallyCompactVisualizer />
 
       <NextLesson 
-        to="/connected-spaces"
+        to="/topology/connected-spaces"
         chapter={10}
         title={next.title}
         description={next.desc}

@@ -34,7 +34,7 @@ const SetConcepts: React.FC = () => {
       <DistributivityTrap />
       
       <NextLesson 
-        to="/neighborhoods-and-bases"
+        to="/topology/neighborhoods-and-bases"
         chapter={3}
         title={next.title}
         description={next.desc}

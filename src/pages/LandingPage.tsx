@@ -28,7 +28,7 @@ const LandingPage: React.FC = () => {
           
           <div className="flex justify-center mb-20">
             <Link 
-              to="/topology-introduction"
+              to="/topology/topology-introduction"
               className="group bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-2xl font-bold text-lg transition-all shadow-xl shadow-blue-200 flex items-center justify-center gap-2"
             >
               {t('landing.start')}
@@ -39,7 +39,7 @@ const LandingPage: React.FC = () => {
 
         {/* Course Syllabus Preview */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-          <Link to="/topology-introduction" className="group">
+          <Link to="/topology/topology-introduction" className="group">
             <div className="p-8 bg-slate-50 rounded-[2.5rem] border-2 border-transparent group-hover:border-blue-500 group-hover:bg-white transition-all h-full">
               <Map className="w-10 h-10 text-blue-600 mb-6" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t('nav.intro')}</h3>
@@ -49,7 +49,7 @@ const LandingPage: React.FC = () => {
             </div>
           </Link>
 
-          <Link to="/interior-closure-boundary" className="group">
+          <Link to="/topology/interior-closure-boundary" className="group">
             <div className="p-8 bg-slate-50 rounded-[2.5rem] border-2 border-transparent group-hover:border-blue-500 group-hover:bg-white transition-all h-full">
               <Target className="w-10 h-10 text-orange-500 mb-6" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t('nav.concepts')}</h3>
@@ -59,7 +59,7 @@ const LandingPage: React.FC = () => {
             </div>
           </Link>
 
-          <Link to="/neighborhoods-and-bases" className="group">
+          <Link to="/topology/neighborhoods-and-bases" className="group">
             <div className="p-8 bg-slate-50 rounded-[2.5rem] border-2 border-transparent group-hover:border-blue-500 group-hover:bg-white transition-all h-full">
               <ZoomIn className="w-10 h-10 text-indigo-600 mb-6" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t('nav.bases')}</h3>
@@ -69,7 +69,7 @@ const LandingPage: React.FC = () => {
             </div>
           </Link>
 
-          <Link to="/density-and-separation" className="group">
+          <Link to="/topology/density-and-separation" className="group">
             <div className="p-8 bg-slate-50 rounded-[2.5rem] border-2 border-transparent group-hover:border-blue-500 group-hover:bg-white transition-all h-full">
               <ShieldCheck className="w-10 h-10 text-emerald-600 mb-6" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t('nav.density')}</h3>
@@ -79,7 +79,7 @@ const LandingPage: React.FC = () => {
             </div>
           </Link>
 
-          <Link to="/induced-topology" className="group">
+          <Link to="/topology/induced-topology" className="group">
             <div className="p-8 bg-slate-50 rounded-[2.5rem] border-2 border-transparent group-hover:border-blue-500 group-hover:bg-white transition-all h-full">
               <Globe className="w-10 h-10 text-blue-500 mb-6" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t('nav.induced')}</h3>
@@ -89,7 +89,7 @@ const LandingPage: React.FC = () => {
             </div>
           </Link>
 
-          <Link to="/product-topology" className="group">
+          <Link to="/topology/product-topology" className="group">
             <div className="p-8 bg-slate-50 rounded-[2.5rem] border-2 border-transparent group-hover:border-blue-500 group-hover:bg-white transition-all h-full">
               <Combine className="w-10 h-10 text-indigo-600 mb-6" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t('nav.product')}</h3>
@@ -99,7 +99,7 @@ const LandingPage: React.FC = () => {
             </div>
           </Link>
 
-          <Link to="/continuity-and-limits" className="group">
+          <Link to="/topology/continuity-and-limits" className="group">
             <div className="p-8 bg-slate-50 rounded-[2.5rem] border-2 border-transparent group-hover:border-blue-500 group-hover:bg-white transition-all h-full">
               <Activity className="w-10 h-10 text-blue-600 mb-6" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t('nav.continuity')}</h3>
@@ -109,7 +109,7 @@ const LandingPage: React.FC = () => {
             </div>
           </Link>
 
-          <Link to="/compact-spaces" className="group">
+          <Link to="/topology/compact-spaces" className="group">
             <div className="p-8 bg-slate-50 rounded-[2.5rem] border-2 border-transparent group-hover:border-blue-500 group-hover:bg-white transition-all h-full">
               <Box className="w-10 h-10 text-indigo-600 mb-6" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t('nav.compact')}</h3>
@@ -119,7 +119,7 @@ const LandingPage: React.FC = () => {
             </div>
           </Link>
 
-          <Link to="/locally-compact-spaces" className="group">
+          <Link to="/topology/locally-compact-spaces" className="group">
             <div className="p-8 bg-slate-50 rounded-[2.5rem] border-2 border-transparent group-hover:border-blue-500 group-hover:bg-white transition-all h-full">
               <MapPin className="w-10 h-10 text-emerald-600 mb-6" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t('nav.locallyCompact')}</h3>
@@ -129,7 +129,7 @@ const LandingPage: React.FC = () => {
             </div>
           </Link>
 
-          <Link to="/connected-spaces" className="group">
+          <Link to="/topology/connected-spaces" className="group">
             <div className="p-8 bg-slate-50 rounded-[2.5rem] border-2 border-transparent group-hover:border-blue-500 group-hover:bg-white transition-all h-full">
               <Link2 className="w-10 h-10 text-indigo-600 mb-6" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t('nav.connected')}</h3>
@@ -139,7 +139,7 @@ const LandingPage: React.FC = () => {
             </div>
           </Link>
 
-          <Link to="/path-connectedness" className="group">
+          <Link to="/topology/path-connectedness" className="group">
             <div className="p-8 bg-slate-50 rounded-[2.5rem] border-2 border-transparent group-hover:border-blue-500 group-hover:bg-white transition-all h-full">
               <PencilLine className="w-10 h-10 text-blue-600 mb-6" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t('nav.pathConnected')}</h3>

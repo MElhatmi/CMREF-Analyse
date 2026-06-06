@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronRight, Home, Map, Target, ZoomIn, ShieldCheck, Globe, Combine, Activity, Box, MapPin, Link2, PencilLine, Languages } from 'lucide-react';
 import LandingPage from './pages/LandingPage';
@@ -35,24 +35,24 @@ const Navbar: React.FC = () => {
   const isActive = (path: string) => location.pathname === path;
 
   const navLinks = [
-    { path: '/', label: t('nav.home'), icon: <Home className="w-4 h-4" /> },
-    { path: '/topology-introduction', label: t('nav.intro'), icon: <Map className="w-4 h-4" /> },
-    { path: '/interior-closure-boundary', label: t('nav.concepts'), icon: <Target className="w-4 h-4" /> },
-    { path: '/neighborhoods-and-bases', label: t('nav.bases'), icon: <ZoomIn className="w-4 h-4" /> },
-    { path: '/density-and-separation', label: t('nav.density'), icon: <ShieldCheck className="w-4 h-4" /> },
-    { path: '/induced-topology', label: t('nav.induced'), icon: <Globe className="w-4 h-4" /> },
-    { path: '/product-topology', label: t('nav.product'), icon: <Combine className="w-4 h-4" /> },
-    { path: '/continuity-and-limits', label: t('nav.continuity'), icon: <Activity className="w-4 h-4" /> },
-    { path: '/compact-spaces', label: t('nav.compact'), icon: <Box className="w-4 h-4" /> },
-    { path: '/locally-compact-spaces', label: t('nav.locallyCompact'), icon: <MapPin className="w-4 h-4" /> },
-    { path: '/connected-spaces', label: t('nav.connected'), icon: <Link2 className="w-4 h-4" /> },
-    { path: '/path-connectedness', label: t('nav.pathConnected'), icon: <PencilLine className="w-4 h-4" /> },
+    { path: '/topology', label: t('nav.home'), icon: <Home className="w-4 h-4" /> },
+    { path: '/topology/introduction', label: t('nav.intro'), icon: <Map className="w-4 h-4" /> },
+    { path: '/topology/interior-closure-boundary', label: t('nav.concepts'), icon: <Target className="w-4 h-4" /> },
+    { path: '/topology/neighborhoods-and-bases', label: t('nav.bases'), icon: <ZoomIn className="w-4 h-4" /> },
+    { path: '/topology/density-and-separation', label: t('nav.density'), icon: <ShieldCheck className="w-4 h-4" /> },
+    { path: '/topology/induced-topology', label: t('nav.induced'), icon: <Globe className="w-4 h-4" /> },
+    { path: '/topology/product-topology', label: t('nav.product'), icon: <Combine className="w-4 h-4" /> },
+    { path: '/topology/continuity-and-limits', label: t('nav.continuity'), icon: <Activity className="w-4 h-4" /> },
+    { path: '/topology/compact-spaces', label: t('nav.compact'), icon: <Box className="w-4 h-4" /> },
+    { path: '/topology/locally-compact-spaces', label: t('nav.locallyCompact'), icon: <MapPin className="w-4 h-4" /> },
+    { path: '/topology/connected-spaces', label: t('nav.connected'), icon: <Link2 className="w-4 h-4" /> },
+    { path: '/topology/path-connectedness', label: t('nav.pathConnected'), icon: <PencilLine className="w-4 h-4" /> },
   ];
 
   return (
     <header className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
       <nav className="mx-auto max-w-7xl px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
+        <Link to="/topology" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
             τ
           </div>
@@ -145,18 +145,24 @@ function App() {
           <Navbar />
 
           <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/topology-introduction" element={<TopologyBasics />} />
-            <Route path="/interior-closure-boundary" element={<SetConcepts />} />
-            <Route path="/neighborhoods-and-bases" element={<NeighborhoodsAndBases />} />
-            <Route path="/density-and-separation" element={<DensityAndSeparation />} />
-            <Route path="/induced-topology" element={<InducedTopology />} />
-            <Route path="/product-topology" element={<ProductTopology />} />
-            <Route path="/continuity-and-limits" element={<ContinuityAndLimits />} />
-            <Route path="/compact-spaces" element={<CompactSpaces />} />
-            <Route path="/locally-compact-spaces" element={<LocallyCompactSpaces />} />
-            <Route path="/connected-spaces" element={<ConnectedSpacesPage />} />
-            <Route path="/path-connectedness" element={<PathConnectednessPage />} />
+            {/* Redirect root to topology hub for now */}
+            <Route path="/" element={<Navigate to="/topology" replace />} />
+            
+            {/* Topology Course Subroute */}
+            <Route path="/topology">
+              <Route index element={<LandingPage />} />
+              <Route path="introduction" element={<TopologyBasics />} />
+              <Route path="interior-closure-boundary" element={<SetConcepts />} />
+              <Route path="neighborhoods-and-bases" element={<NeighborhoodsAndBases />} />
+              <Route path="density-and-separation" element={<DensityAndSeparation />} />
+              <Route path="induced-topology" element={<InducedTopology />} />
+              <Route path="product-topology" element={<ProductTopology />} />
+              <Route path="continuity-and-limits" element={<ContinuityAndLimits />} />
+              <Route path="compact-spaces" element={<CompactSpaces />} />
+              <Route path="locally-compact-spaces" element={<LocallyCompactSpaces />} />
+              <Route path="connected-spaces" element={<ConnectedSpacesPage />} />
+              <Route path="path-connectedness" element={<PathConnectednessPage />} />
+            </Route>
           </Routes>
 
           <footer className="bg-slate-900 py-12 px-6">

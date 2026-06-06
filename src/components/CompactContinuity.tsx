@@ -1,28 +1,57 @@
 import React from 'react';
-import { InlineMath } from './Math';
 import { Theorem } from './MathBlocks';
 import { Sparkles, ArrowRight, Maximize2 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const CompactContinuity: React.FC = () => {
+  const { language } = useLanguage();
+
+  const content = {
+    EN: {
+      title: "3.2 Properties of Continuous Functions on a Compact",
+      theorem2: "Theorem 2: Continuous Image",
+      theorem2_desc: "Let (E, TE) be a compact space and (F, TF) a separated space. For any continuous function f: E \u2192 F, the direct image f(E) is compact in F.",
+      intuitionTitle: "Intuition",
+      intuitionDesc: "A continuous function is like a smooth stretching of a material. If you start with a \"contained\" compact space, no matter how much you stretch or bend it (without tearing), it will remain \"contained\" and closed in the target space.",
+      consequenceTitle: "The Fundamental Consequence",
+      evtTitle: "Extreme Value Theorem",
+      evtDesc: "If f: E \u2192 R is a continuous function on a compact space E, then its image f(E) is a compact subset of R.",
+      evtFinal: "By the Borel-Lebesgue theorem in R, f(E) must be closed and bounded. Therefore, the function is bounded and guaranteed to attain its global maximum and global minimum."
+    },
+    FR: {
+      title: "3.2 Propriétés des fonctions continues sur un compact",
+      theorem2: "Théorème 2 : Image continue",
+      theorem2_desc: "Soient (E, TE) un espace compact et (F, TF) un espace séparé. Pour toute application continue f: E \u2192 F, l'image directe f(E) est un compact de F.",
+      intuitionTitle: "Intuition",
+      intuitionDesc: "Une fonction continue est comme un étirement fluide d'un matériau. Si vous partez d'un espace compact « contenu », peu importe à quel point vous l'étirez ou le pliez (sans le déchirer), il restera « contenu » et fermé dans l'espace d'arrivée.",
+      consequenceTitle: "La conséquence fondamentale",
+      evtTitle: "Théorème des bornes (T.V.I. étendu)",
+      evtDesc: "Si f: E \u2192 R est une fonction continue sur un espace compact E, alors son image f(E) est un compact de R.",
+      evtFinal: "D'après le théorème de Borel-Lebesgue dans R, f(E) est donc un ensemble fermé et borné. Par conséquent, la fonction est bornée et atteint ses bornes (maximum et minimum globaux)."
+    }
+  };
+
+  const curr = content[language];
+
   return (
     <section className="bg-white py-24 px-6 overflow-hidden">
       <div className="mx-auto max-w-5xl">
         <h2 className="text-3xl font-bold text-slate-900 mb-12 tracking-tight border-b border-slate-100 pb-4">
-          3.2 Properties of Continuous Functions on a Compact
+          {curr.title}
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
            <div className="space-y-8">
-              <Theorem title="Theorem 2: Continuous Image">
-                Let <InlineMath math="(E, \mathcal{T}_E)" /> be a compact space and <InlineMath math="(F, \mathcal{T}_F)" /> a separated space. For any continuous function <InlineMath math="f: E \to F" />, the direct image <InlineMath math="f(E)" /> is compact in <InlineMath math="F" />.
+              <Theorem title={curr.theorem2}>
+                {curr.theorem2_desc}
               </Theorem>
 
               <div className="bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 shadow-inner">
                  <h4 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-blue-500" /> Intuition
+                    <Sparkles className="w-4 h-4 text-blue-500" /> {curr.intuitionTitle}
                  </h4>
                  <p className="text-slate-600 text-sm leading-relaxed italic">
-                    A continuous function is like a smooth stretching of a material. If you start with a "contained" compact space, no matter how much you stretch or bend it (without tearing), it will remain "contained" and closed in the target space.
+                    {curr.intuitionDesc}
                  </p>
               </div>
            </div>
@@ -32,12 +61,12 @@ const CompactContinuity: React.FC = () => {
                  <Maximize2 className="w-32 h-32" />
               </div>
               <div className="relative z-10">
-                 <h3 className="text-2xl font-bold mb-8">The Fundamental Consequence</h3>
+                 <h3 className="text-2xl font-bold mb-8">{curr.consequenceTitle}</h3>
                  <div className="space-y-6">
                     <div className="bg-white/10 p-6 rounded-2xl border border-white/20">
-                       <h5 className="font-bold text-blue-300 text-sm mb-2 uppercase tracking-tighter">Extreme Value Theorem</h5>
+                       <h5 className="font-bold text-blue-300 text-sm mb-2 uppercase tracking-tighter">{curr.evtTitle}</h5>
                        <p className="text-sm text-indigo-50 leading-relaxed">
-                          If <InlineMath math="f: E \to \mathbb{R}" /> is a continuous function on a compact space <InlineMath math="E" />, then its image <InlineMath math="f(E)" /> is a compact subset of <InlineMath math="\mathbb{R}" />.
+                          {curr.evtDesc}
                        </p>
                     </div>
                     
@@ -46,8 +75,8 @@ const CompactContinuity: React.FC = () => {
                     </div>
 
                     <div className="bg-white/10 p-6 rounded-2xl border border-white/20 italic">
-                       <p className="text-sm text-indigo-50">
-                          By the Borel-Lebesgue theorem in R, <InlineMath math="f(E)" /> must be <strong>closed and bounded</strong>. Therefore, the function is guaranteed to attain its global maximum and global minimum.
+                       <p className="text-sm text-indigo-50 leading-relaxed">
+                          {curr.evtFinal}
                        </p>
                     </div>
                  </div>

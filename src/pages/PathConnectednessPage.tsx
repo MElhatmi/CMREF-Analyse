@@ -19,7 +19,7 @@ const PathConnectednessPage: React.FC = () => {
       <SineCurveVisualizer />
 
       <NextLesson 
-        to="/"
+        to="/topology"
         chapter={1}
         title={t('common.complete')}
         description={t('common.return')}

@@ -32,7 +32,7 @@ const DensityAndSeparation: React.FC = () => {
       <SeparationTestVisualizer />
       
       <NextLesson 
-        to="/induced-topology"
+        to="/topology/induced-topology"
         chapter={5}
         title={next.title}
         description={next.desc}

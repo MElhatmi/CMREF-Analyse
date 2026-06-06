@@ -32,7 +32,7 @@ const CompactSpaces: React.FC = () => {
       <CompactContinuity />
 
       <NextLesson 
-        to="/locally-compact-spaces"
+        to="/topology/locally-compact-spaces"
         chapter={9}
         title={next.title}
         description={next.desc}

@@ -30,7 +30,7 @@ const ProductTopology: React.FC = () => {
       <InfiniteProductSimulator />
       
       <NextLesson 
-        to="/continuity-and-limits"
+        to="/topology/continuity-and-limits"
         chapter={7}
         title={next.title}
         description={next.desc}

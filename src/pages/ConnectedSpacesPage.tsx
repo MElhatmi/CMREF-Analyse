@@ -32,7 +32,7 @@ const ConnectedSpacesPage: React.FC = () => {
       <IVTVisualizer />
 
       <NextLesson 
-        to="/path-connectedness"
+        to="/topology/path-connectedness"
         chapter={11}
         title={next.title}
         description={next.desc}

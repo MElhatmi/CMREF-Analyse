@@ -30,7 +30,7 @@ const NeighborhoodsAndBases: React.FC = () => {
       <BaseBuilderVisualizer />
       
       <NextLesson 
-        to="/density-and-separation"
+        to="/topology/density-and-separation"
         chapter={4}
         title={next.title}
         description={next.desc}
