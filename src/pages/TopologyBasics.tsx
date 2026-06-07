@@ -7,16 +7,16 @@ import NextLesson from '../components/NextLesson';
 import { useLanguage } from '../context/LanguageContext';
 
 const TopologyBasics: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   const content = {
     EN: {
       title: "Interior, Closure & Boundary",
-      desc: "Learn how to define the core, the edge, and the shell of any topological set."
+      desc: t('chapter.2.desc')
     },
     FR: {
       title: "Intérieur, Adhérence & Frontière",
-      desc: "Apprenez à définir le cœur, le bord et la coque de n'importe quel ensemble topologique."
+      desc: t('chapter.2.desc')
     }
   };
 

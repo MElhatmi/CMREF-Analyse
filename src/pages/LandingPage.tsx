@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { BookOpen, Map, Target, ArrowRight, ZoomIn, ShieldCheck, Globe, Combine, Activity, Box, MapPin, Link2, PencilLine } from 'lucide-react';
+import { BookOpen, Map, Target, ArrowRight, ZoomIn, ShieldCheck, Globe, Combine, Activity, Box, MapPin, Link2, PencilLine, Ruler } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const LandingPage: React.FC = () => {
@@ -148,6 +148,25 @@ const LandingPage: React.FC = () => {
               </p>
             </div>
           </Link>
+        </div>
+
+        {/* Other Courses CTA */}
+        <div className="mt-32 p-12 bg-slate-900 rounded-[4rem] text-white relative overflow-hidden shadow-2xl">
+           <div className="absolute top-0 right-0 p-8 opacity-10">
+              <Ruler className="w-64 h-64" />
+           </div>
+           <div className="relative z-10 text-center">
+              <h3 className="text-3xl font-bold mb-4">Expanding Your Horizons</h3>
+              <p className="text-slate-400 max-w-xl mx-auto mb-8">
+                 Mastered the abstract foundations? Move into a more measurable world with our new course on <strong>Metric Spaces</strong>.
+              </p>
+              <Link 
+                to="/metrics/foundations"
+                className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-500/20"
+              >
+                Go to Metric Spaces <ArrowRight className="w-5 h-5" />
+              </Link>
+           </div>
         </div>
       </div>
     </div>

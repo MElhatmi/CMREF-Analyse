@@ -9,23 +9,23 @@ const LocallyCompactDefinitions: React.FC = () => {
     EN: {
       header: "Formal Definitions & Structure",
       def17: "Definition 17",
-      def17_1: "A separated (Hausdorff) topological space (E, T) is locally compact if every point x \u2208 E possesses at least one compact neighborhood.",
+      def17_1: "A separated (Hausdorff) topological space (E, T) is locally compact if every point x ∈ E possesses at least one compact neighborhood.",
       def17_2: "A subset A of a separated topological space is locally compact if A, equipped with the induced topology, is locally compact.",
       prop14Title: "Proposition 14 (Products)",
       prop14Desc: "A finite product of locally compact spaces is locally compact.",
-      prop14Sub: "Because R is locally compact, this proposition instantly proves that 2D planes R\u00B2 and 3D spaces R\u00B3 are also locally compact.",
+      prop14Sub: "Because ℝ is locally compact, this proposition instantly proves that 2D planes ℝ² and 3D spaces ℝ³ are also locally compact.",
       recall: "Recall: A neighborhood V is compact if every open cover of V has a finite subcover. Locally compact spaces essentially \"smuggle\" the finiteness of compact spaces into every single point of a much larger, potentially infinite universe."
-    },
-    FR: {
+      },
+      FR: {
       header: "Définitions formelles & Structure",
       def17: "Définition 17",
-      def17_1: "Un espace topologique séparé (Hausdorff) (E, T) est dit localement compact si tout point x \u2208 E possède au moins un voisinage compact.",
+      def17_1: "Un espace topologique séparé (Hausdorff) (E, T) est dit localement compact si tout point x ∈ E possède au moins un voisinage compact.",
       def17_2: "Une partie A d'un espace séparé est localement compacte si A, munie de la topologie induite, est un espace localement compact.",
       prop14Title: "Proposition 14 (Produits)",
       prop14Desc: "Un produit fini d'espaces localement compacts est localement compact.",
-      prop14Sub: "Puisque R est localement compact, cette proposition prouve instantanément que les plans 2D R\u00B2 et les espaces 3D R\u00B3 sont aussi localement compacts.",
+      prop14Sub: "Puisque ℝ est localement compact, cette proposition prouve instantanément que les plans 2D ℝ² et les espaces 3D ℝ³ sont aussi localement compacts.",
       recall: "Rappel : Un voisinage V est compact si de tout recouvrement ouvert de V on peut extraire un sous-recouvrement fini. Les espaces localement compacts « injectent » la finitude des compacts en chaque point d'un univers bien plus grand et potentiellement infini."
-    }
+      }
   };
 
   const curr = content[language];

@@ -55,7 +55,7 @@ const CompactDefinitions: React.FC = () => {
         <h2 className="text-3xl font-bold text-slate-900 mb-8 tracking-tight">{curr.title}</h2>
         
         <Definition title={curr.def15.title}>
-          Soit <InlineMath math="(E, \\mathcal{T})" /> un espace topologique et <InlineMath math="A \\subset E" />.
+          Soit <InlineMath math="(E, \mathcal{T})" /> un espace topologique et <InlineMath math="A \subset E" />.
           <ol className="list-decimal pl-5 mt-4 space-y-4">
             {curr.def15.rules.map((r, i) => (
               <li key={i}>{r}</li>

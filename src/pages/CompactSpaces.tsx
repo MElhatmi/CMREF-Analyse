@@ -8,16 +8,16 @@ import NextLesson from '../components/NextLesson';
 import { useLanguage } from '../context/LanguageContext';
 
 const CompactSpaces: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   const content = {
     EN: {
       title: "Locally Compact Spaces",
-      desc: "Discover how massive spaces like R^n behave like compact sets when you zoom in on individual points."
+      desc: t('chapter.9.desc')
     },
     FR: {
       title: "Espaces localement compacts",
-      desc: "Découvrez comment des espaces massifs comme R^n se comportent comme des ensembles compacts en zoomant sur chaque point."
+      desc: t('chapter.9.desc')
     }
   };
 

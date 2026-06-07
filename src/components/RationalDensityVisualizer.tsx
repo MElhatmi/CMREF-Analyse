@@ -80,7 +80,7 @@ const RationalDensityVisualizer: React.FC = () => {
                <div className="p-5 bg-blue-50 rounded-2xl border border-blue-100">
                   <p className="text-[10px] text-blue-400 font-bold uppercase mb-2">{curr.targetLabel}</p>
                   <div className="flex justify-between items-baseline">
-                    <InlineMath math="\\pi \\approx" />
+                    <InlineMath math="\pi \approx" />
                     <span className="font-mono text-lg text-blue-900">3.141592...</span>
                   </div>
                </div>
@@ -88,7 +88,7 @@ const RationalDensityVisualizer: React.FC = () => {
                <div className="p-5 bg-slate-900 rounded-2xl border border-slate-800 shadow-xl">
                   <p className="text-[10px] text-slate-500 font-bold uppercase mb-2">{curr.foundLabel}</p>
                   <AnimatePresence mode="wait">
-                    <motion.div 
+                    <motion.div
                       key={`${rational.p}/${rational.q}`}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -99,18 +99,18 @@ const RationalDensityVisualizer: React.FC = () => {
                     </motion.div>
                   </AnimatePresence>
                </div>
-            </div>
-          </div>
+               </div>
+               </div>
 
-          <div className="lg:col-span-2 bg-slate-900 rounded-[3rem] p-12 min-h-[450px] flex flex-col justify-center relative overflow-hidden shadow-2xl">
-            <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+               <div className="lg:col-span-2 bg-slate-900 rounded-[3rem] p-12 min-h-[450px] flex flex-col justify-center relative overflow-hidden shadow-2xl">
+               <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-            <div className="relative z-10 w-full space-y-20">
+               <div className="relative z-10 w-full space-y-20">
                <div className="relative h-px bg-slate-700 w-full">
                   <div className="absolute left-1/2 top-0 -translate-x-1/2 flex flex-col items-center">
                     <div className="h-20 w-px bg-blue-500/50 -translate-y-10" />
                     <div className="w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.8)] -translate-y-2" />
-                    <span className="mt-4 text-xl font-serif italic text-blue-400"><InlineMath math="\\pi" /></span>
+                    <span className="mt-4 text-xl font-serif italic text-blue-400"><InlineMath math="\pi" /></span>
                   </div>
 
                   <motion.div

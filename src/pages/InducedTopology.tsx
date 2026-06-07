@@ -7,16 +7,16 @@ import NextLesson from '../components/NextLesson';
 import { useLanguage } from '../context/LanguageContext';
 
 const InducedTopology: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   const content = {
     EN: {
       title: "Product Topology",
-      desc: "Discover how to build complex spaces by multiplying simpler ones together."
+      desc: t('chapter.6.desc')
     },
     FR: {
       title: "Topologie produit",
-      desc: "Découvrez comment construire des espaces complexes en multipliant des espaces plus simples."
+      desc: t('chapter.6.desc')
     }
   };
 

@@ -9,16 +9,16 @@ import NextLesson from '../components/NextLesson';
 import { useLanguage } from '../context/LanguageContext';
 
 const SetConcepts: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   const content = {
     EN: {
       title: "Neighborhoods & Bases",
-      desc: "Zoom into the local environment of points and discover the fundamental building blocks of space."
+      desc: t('chapter.3.desc')
     },
     FR: {
       title: "Voisinages & Bases",
-      desc: "Zoomez sur l'environnement local des points et découvrez les briques fondamentales de l'espace."
+      desc: t('chapter.3.desc')
     }
   };
 

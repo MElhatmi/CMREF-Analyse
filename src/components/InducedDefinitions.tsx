@@ -51,7 +51,7 @@ const InducedDefinitions: React.FC = () => {
           </p>
 
           <div className="bg-slate-50 p-6 rounded-3xl border border-slate-100 mb-12 shadow-inner">
-             <BlockMath math="\\mathcal{T}_A = \\{O \\cap A \\mid O \\in \\mathcal{T}\\}" />
+             <BlockMath math="\mathcal{T}_A = \{O \cap A \mid O \in \mathcal{T}\}" />
           </div>
 
           <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">{curr.inheritance}</h3>
@@ -60,21 +60,21 @@ const InducedDefinitions: React.FC = () => {
                 <p className="font-bold text-blue-900 text-sm mb-3 uppercase tracking-tighter">{curr.openA}</p>
                 <p className="text-xs text-slate-600 leading-relaxed italic mb-4">{curr.openDesc}</p>
                 <div className="mt-auto">
-                   <InlineMath math="O' \\in \\mathcal{T}_A \\iff \\exists O \\in \\mathcal{T}, \\quad O' = O \\cap A" />
+                   <InlineMath math="O' \in \mathcal{T}_A \iff \exists O \in \mathcal{T}, \quad O' = O \cap A" />
                 </div>
              </div>
              <div className="p-6 bg-slate-50 rounded-3xl border border-slate-200 flex flex-col">
                 <p className="font-bold text-slate-900 text-sm mb-3 uppercase tracking-tighter">{curr.closedA}</p>
                 <p className="text-xs text-slate-500 leading-relaxed italic mb-4">{curr.closedDesc}</p>
                 <div className="mt-auto">
-                   <InlineMath math="F' \\text{ fermé dans } A \\iff \\exists F \\text{ fermé dans } E, \\quad F' = F \\cap A" />
+                   <InlineMath math="F' \text{ fermé dans } A \iff \exists F \text{ fermé dans } E, \quad F' = F \cap A" />
                 </div>
              </div>
              <div className="p-6 bg-indigo-50/30 rounded-3xl border border-indigo-100 flex flex-col">
                 <p className="font-bold text-indigo-900 text-sm mb-3 uppercase tracking-tighter">{curr.neighA}</p>
                 <p className="text-xs text-slate-600 leading-relaxed italic mb-4">{curr.neighDesc}</p>
                 <div className="mt-auto">
-                   <InlineMath math="V' \\in \\mathcal{V}_A(x) \\iff \\exists V \\in \\mathcal{V}_E(x), \\quad V' = V \\cap A" />
+                   <InlineMath math="V' \in \mathcal{V}_A(x) \iff \exists V \in \mathcal{V}_E(x), \quad V' = V \cap A" />
                 </div>
              </div>
           </div>

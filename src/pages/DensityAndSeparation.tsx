@@ -8,16 +8,16 @@ import NextLesson from '../components/NextLesson';
 import { useLanguage } from '../context/LanguageContext';
 
 const DensityAndSeparation: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   const content = {
     EN: {
       title: "Induced Topology",
-      desc: "Learn how to extract subsets and treat them as independent topological universes."
+      desc: t('chapter.5.desc')
     },
     FR: {
       title: "Topologie induite",
-      desc: "Apprenez à extraire des sous-ensembles et à les traiter comme des univers topologiques indépendants."
+      desc: t('chapter.5.desc')
     }
   };
 

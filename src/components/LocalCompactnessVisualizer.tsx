@@ -132,7 +132,7 @@ const LocalCompactnessVisualizer: React.FC = () => {
                                <p className="text-xs leading-relaxed opacity-80">
                                  {space === 'R' 
                                   ? "Success. The closed interval is a compact neighborhood in \u211D. Every real number has breathing room that stays within the space."
-                                  : "Failed. Any closed interval of fractions contains 'holes' where irrationals like \u221A2 should be. Sequences can escape \u211A through these holes, so no neighborhood is compact."}
+                                  : "Failed. Any closed interval of fractions contains 'holes' where irrationals like √2 should be. Sequences can escape ℚ through these holes, so no neighborhood is compact."}
                                </p>
                             </div>
                          </div>

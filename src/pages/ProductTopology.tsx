@@ -7,16 +7,16 @@ import NextLesson from '../components/NextLesson';
 import { useLanguage } from '../context/LanguageContext';
 
 const ProductTopology: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   const content = {
     EN: {
       title: "Continuity & Limits",
-      desc: "Generalize the core of calculus into the language of open sets and neighborhoods."
+      desc: t('chapter.7.desc')
     },
     FR: {
       title: "Continuité & Limites",
-      desc: "Généralisez le cœur du calcul infinitésimal dans le langage des ouverts et des voisinages."
+      desc: t('chapter.7.desc')
     }
   };
 

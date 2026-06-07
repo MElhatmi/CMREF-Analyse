@@ -7,16 +7,16 @@ import NextLesson from '../components/NextLesson';
 import { useLanguage } from '../context/LanguageContext';
 
 const NeighborhoodsAndBases: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   const content = {
     EN: {
       title: "Density & Separation",
-      desc: "Explore everywhere-dense sets and the Hausdorff property that gives points their unique identity."
+      desc: t('chapter.4.desc')
     },
     FR: {
       title: "Densité & Séparation",
-      desc: "Explorez les ensembles denses et la propriété de Hausdorff qui confère aux points leur identité unique."
+      desc: t('chapter.4.desc')
     }
   };
 

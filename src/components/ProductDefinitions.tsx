@@ -57,7 +57,7 @@ const ProductDefinitions: React.FC = () => {
                <p className="text-sm text-slate-600 mb-6 leading-relaxed">
                  {curr.desc1}
                </p>
-               <BlockMath math="R = \\prod_{i \in I} U_i \\quad \\text{où } U_i \\in \\mathcal{T}_i" />
+               <BlockMath math="R = \prod_{i \in I} U_i \quad \text{où } U_i \in \mathcal{T}_i" />
                <div className="mt-6 p-4 bg-white rounded-2xl border-l-4 border-amber-500 flex gap-4">
                   <AlertTriangle className="w-5 h-5 text-amber-500 shrink-0" />
                   <div>

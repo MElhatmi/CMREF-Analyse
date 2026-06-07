@@ -8,16 +8,16 @@ import NextLesson from '../components/NextLesson';
 import { useLanguage } from '../context/LanguageContext';
 
 const ContinuityAndLimits: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   const content = {
     EN: {
       title: "Compact Spaces",
-      desc: "Master the gold standard of topological finiteness and the power of finite subcovers."
+      desc: t('chapter.8.desc')
     },
     FR: {
       title: "Espaces compacts",
-      desc: "Maîtrisez la norme d'or de la finitude topologique et la puissance des recouvrements finis."
+      desc: t('chapter.8.desc')
     }
   };
 

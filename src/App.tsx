@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight, Home, Map, Target, ZoomIn, ShieldCheck, Globe, Combine, Activity, Box, MapPin, Link2, PencilLine, Languages } from 'lucide-react';
+import { Menu, X, ChevronRight, Home, Map, Target, ZoomIn, ShieldCheck, Globe, Combine, Activity, Box, MapPin, Link2, PencilLine, Languages, Ruler, Circle, ShieldAlert, Footprints, Sparkles, Network, Wind } from 'lucide-react';
 import LandingPage from './pages/LandingPage';
 import TopologyBasics from './pages/TopologyBasics';
 import SetConcepts from './pages/SetConcepts';
@@ -14,6 +14,17 @@ import CompactSpaces from './pages/CompactSpaces';
 import LocallyCompactSpaces from './pages/LocallyCompactSpaces';
 import ConnectedSpacesPage from './pages/ConnectedSpacesPage';
 import PathConnectednessPage from './pages/PathConnectednessPage';
+import MetricsLandingPage from './pages/MetricsLandingPage';
+import MetricFoundations from './pages/MetricFoundations';
+import MetricBallsPage from './pages/MetricBallsPage';
+import MetricOpenSets from './pages/MetricOpenSets';
+import MetricClosedSets from './pages/MetricClosedSets';
+import MetricNeighborhoodsPage from './pages/MetricNeighborhoodsPage';
+import MetricSequencesPage from './pages/MetricSequencesPage';
+import MetricContinuityPage from './pages/MetricContinuityPage';
+import MetricCompactPage from './pages/MetricCompactPage';
+import MetricCompactLebesgue from './pages/MetricCompactLebesgue';
+import MetricCompletenessPage from './pages/MetricCompletenessPage';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 
 // Component to handle scroll reset on route change
@@ -34,7 +45,7 @@ const Navbar: React.FC = () => {
   
   const isActive = (path: string) => location.pathname === path;
 
-  const navLinks = [
+  const topologyLinks = [
     { path: '/topology', label: t('nav.home'), icon: <Home className="w-4 h-4" /> },
     { path: '/topology/introduction', label: t('nav.intro'), icon: <Map className="w-4 h-4" /> },
     { path: '/topology/interior-closure-boundary', label: t('nav.concepts'), icon: <Target className="w-4 h-4" /> },
@@ -49,18 +60,41 @@ const Navbar: React.FC = () => {
     { path: '/topology/path-connectedness', label: t('nav.pathConnected'), icon: <PencilLine className="w-4 h-4" /> },
   ];
 
+  const metricLinks = [
+    { path: '/metrics', label: t('nav.home'), icon: <Home className="w-4 h-4" /> },
+    { path: '/metrics/foundations', label: t('nav.metrics.intro'), icon: <Ruler className="w-4 h-4" /> },
+    { path: '/metrics/balls', label: t('nav.metrics.balls'), icon: <Circle className="w-4 h-4" /> },
+    { path: '/metrics/open-sets', label: t('nav.metrics.open'), icon: <Wind className="w-4 h-4" /> },
+    { path: '/metrics/closed-sets', label: t('nav.metrics.closed'), icon: <ShieldAlert className="w-4 h-4" /> },
+    { path: '/metrics/neighborhoods', label: t('nav.metrics.neigh'), icon: <ZoomIn className="w-4 h-4" /> },
+    { path: '/metrics/sequences', label: t('nav.metrics.seq'), icon: <Footprints className="w-4 h-4" /> },
+    { path: '/metrics/continuity', label: t('nav.metrics.continuity'), icon: <Activity className="w-4 h-4" /> },
+    { path: '/metrics/compactness', label: t('nav.metrics.compact'), icon: <Box className="w-4 h-4" /> },
+    { path: '/metrics/preservation', label: t('nav.metrics.compact2'), icon: <Sparkles className="w-4 h-4" /> },
+    { path: '/metrics/completeness', label: t('nav.metrics.complete'), icon: <Network className="w-4 h-4" /> },
+  ];
+
+  const currentCourse = location.pathname.startsWith('/metrics') ? 'metrics' : 'topology';
+
   return (
     <header className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
       <nav className="mx-auto max-w-7xl px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link to="/topology" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-            τ
+        <div className="flex items-center gap-8">
+          <Link to={`/${currentCourse}`} onClick={() => setIsOpen(false)} className="flex items-center gap-2">
+            <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-xl ${currentCourse === 'metrics' ? 'bg-indigo-600' : 'bg-blue-600'}`}>
+              {currentCourse === 'metrics' ? 'm' : 'τ'}
+            </div>
+            <span className="font-bold text-slate-900 tracking-tight">TopoLearn</span>
+          </Link>
+          
+          <div className="hidden md:flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+            <Link to="/topology" className={`${currentCourse === 'topology' ? 'text-blue-600' : 'hover:text-slate-600'} transition-colors`}>Topology</Link>
+            <div className="w-1 h-1 bg-slate-200 rounded-full" />
+            <Link to="/metrics" className={`${currentCourse === 'metrics' ? 'text-indigo-600' : 'hover:text-slate-600'} transition-colors`}>Metrics</Link>
           </div>
-          <span className="font-bold text-slate-900 tracking-tight">TopoLearn</span>
-        </Link>
+        </div>
 
         <div className="flex items-center gap-2">
-          {/* Language Toggle */}
           <button 
             onClick={() => setLanguage(language === 'EN' ? 'FR' : 'EN')}
             className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-100 text-slate-600 hover:bg-white hover:shadow-sm transition-all"
@@ -69,7 +103,6 @@ const Navbar: React.FC = () => {
             <span className="text-[10px] font-bold uppercase tracking-widest">{language}</span>
           </button>
 
-          {/* Burger Menu Button */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
             className="p-2 hover:bg-slate-100 rounded-xl transition-colors text-slate-600"
@@ -80,7 +113,6 @@ const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Expandable Dropdown Menu */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -100,33 +132,60 @@ const Navbar: React.FC = () => {
               className="absolute top-full right-4 w-80 bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-4 z-[100] mt-2 overflow-hidden"
             >
               <div className="flex flex-col gap-1 overflow-y-auto max-h-[80vh] custom-scrollbar">
-                <p className="px-4 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">{t('nav.curriculum')}</p>
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all ${
-                      isActive(link.path) 
-                        ? 'bg-blue-50 text-blue-600' 
-                        : 'hover:bg-slate-50 text-slate-600 hover:text-slate-900'
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className={`p-2 rounded-lg ${isActive(link.path) ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>
-                        {link.icon}
-                      </div>
-                      <span className="font-bold text-xs">{link.label}</span>
-                    </div>
-                    {isActive(link.path) && <ChevronRight className="w-4 h-4" />}
-                  </Link>
-                ))}
-              </div>
-              
-              <div className="mt-4 pt-4 border-t border-slate-50 px-4 pb-2 text-center">
-                <p className="text-[10px] text-slate-400 italic leading-relaxed">
-                   {t('nav.comingSoon')}
-                </p>
+                <div className="flex md:hidden items-center justify-around p-2 bg-slate-50 rounded-2xl mb-4 border border-slate-100">
+                  <Link to="/topology" onClick={() => setIsOpen(false)} className={`flex-grow text-center py-2 text-[10px] font-bold uppercase rounded-xl transition-all ${currentCourse === 'topology' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-400'}`}>Topology</Link>
+                  <Link to="/metrics" onClick={() => setIsOpen(false)} className={`flex-grow text-center py-2 text-[10px] font-bold uppercase rounded-xl transition-all ${currentCourse === 'metrics' ? 'bg-white shadow-sm text-indigo-600' : 'text-slate-400'}`}>Metrics</Link>
+                </div>
+
+                {currentCourse === 'topology' ? (
+                  <>
+                    <p className="px-4 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Topology Course</p>
+                    {topologyLinks.map((link) => (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all ${
+                          isActive(link.path) 
+                            ? 'bg-blue-50 text-blue-600' 
+                            : 'hover:bg-slate-50 text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className={`p-2 rounded-lg ${isActive(link.path) ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>
+                            {link.icon}
+                          </div>
+                          <span className="font-bold text-xs">{link.label}</span>
+                        </div>
+                        {isActive(link.path) && <ChevronRight className="w-4 h-4" />}
+                      </Link>
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    <p className="px-4 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Metric Spaces Course</p>
+                    {metricLinks.map((link) => (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all ${
+                          isActive(link.path) 
+                            ? 'bg-indigo-50 text-indigo-600' 
+                            : 'hover:bg-slate-50 text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className={`p-2 rounded-lg ${isActive(link.path) ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-400'}`}>
+                            {link.icon}
+                          </div>
+                          <span className="font-bold text-xs">{link.label}</span>
+                        </div>
+                        {isActive(link.path) && <ChevronRight className="w-4 h-4" />}
+                      </Link>
+                    ))}
+                  </>
+                )}
               </div>
             </motion.div>
           </>
@@ -145,10 +204,8 @@ function App() {
           <Navbar />
 
           <Routes>
-            {/* Redirect root to topology hub for now */}
             <Route path="/" element={<Navigate to="/topology" replace />} />
             
-            {/* Topology Course Subroute */}
             <Route path="/topology">
               <Route index element={<LandingPage />} />
               <Route path="introduction" element={<TopologyBasics />} />
@@ -163,6 +220,20 @@ function App() {
               <Route path="connected-spaces" element={<ConnectedSpacesPage />} />
               <Route path="path-connectedness" element={<PathConnectednessPage />} />
             </Route>
+
+            <Route path="/metrics">
+              <Route index element={<MetricsLandingPage />} />
+              <Route path="foundations" element={<MetricFoundations />} />
+              <Route path="balls" element={<MetricBallsPage />} />
+              <Route path="open-sets" element={<MetricOpenSets />} />
+              <Route path="closed-sets" element={<MetricClosedSets />} />
+              <Route path="neighborhoods" element={<MetricNeighborhoodsPage />} />
+              <Route path="sequences" element={<MetricSequencesPage />} />
+              <Route path="continuity" element={<MetricContinuityPage />} />
+              <Route path="compactness" element={<MetricCompactPage />} />
+              <Route path="preservation" element={<MetricCompactLebesgue />} />
+              <Route path="completeness" element={<MetricCompletenessPage />} />
+            </Route>
           </Routes>
 
           <footer className="bg-slate-900 py-12 px-6">
@@ -175,7 +246,7 @@ function App() {
                   <span className="font-bold text-white tracking-tight">TopoLearn</span>
                 </div>
                 <p className="text-slate-400 text-sm max-w-xs italic">
-                  A modern interactive guide to understanding the abstract beauty of Point-Set Topology.
+                  A modern interactive guide to understanding the abstract beauty of Point-Set Topology and Metric Spaces.
                 </p>
               </div>
               <div className="text-slate-500 text-xs">
@@ -187,6 +258,6 @@ function App() {
       </Router>
     </LanguageProvider>
   );
-}
+};
 
 export default App;
