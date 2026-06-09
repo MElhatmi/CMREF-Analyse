@@ -25,6 +25,18 @@ import MetricContinuityPage from './pages/MetricContinuityPage';
 import MetricCompactPage from './pages/MetricCompactPage';
 import MetricCompactLebesgue from './pages/MetricCompactLebesgue';
 import MetricCompletenessPage from './pages/MetricCompletenessPage';
+import TD1 from './pages/TD1';
+import TD1Ex2 from './pages/TD1Ex2';
+import TD1Ex3 from './pages/TD1Ex3';
+import TD1Ex4 from './pages/TD1Ex4';
+import TD1Ex5 from './pages/TD1Ex5';
+import TD1Ex6 from './pages/TD1Ex6';
+import TD1Ex7 from './pages/TD1Ex7';
+import TD1Ex8 from './pages/TD1Ex8';
+import TD1Ex9 from './pages/TD1Ex9';
+import TD1Ex10 from './pages/TD1Ex10';
+import TD1Ex11 from './pages/TD1Ex11';
+import TD1Ex12 from './pages/TD1Ex12';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 
 // Component to handle scroll reset on route change
@@ -74,15 +86,37 @@ const Navbar: React.FC = () => {
     { path: '/metrics/completeness', label: t('nav.metrics.complete'), icon: <Network className="w-4 h-4" /> },
   ];
 
-  const currentCourse = location.pathname.startsWith('/metrics') ? 'metrics' : 'topology';
+  const tdLinks = [
+    { path: '/td1/ex1', label: 'Exercice 1: Distance Discrète', icon: <PencilLine className="w-4 h-4" /> },
+    { path: '/td1/ex2', label: 'Exercice 2: Complétude de (R, δ)', icon: <PencilLine className="w-4 h-4" /> },
+    { path: '/td1/ex3', label: 'Exercice 3: Propriétés de (E, d)', icon: <PencilLine className="w-4 h-4" /> },
+    { path: '/td1/ex4', label: 'Exercice 4: Ensembles non fermés', icon: <PencilLine className="w-4 h-4" /> },
+    { path: '/td1/ex5', label: 'Exercice 5: Analyse Topologique', icon: <PencilLine className="w-4 h-4" /> },
+    { path: '/td1/ex6', label: 'Exercice 6: Topologie dans R²', icon: <PencilLine className="w-4 h-4" /> },
+    { path: '/td1/ex7', label: 'Exercice 7: Intersections & Adhérences', icon: <PencilLine className="w-4 h-4" /> },
+    { path: '/td1/ex8', label: 'Exercice 8: Distances & Séparation', icon: <PencilLine className="w-4 h-4" /> },
+    { path: '/td1/ex9', label: 'Exercice 9: Normes sur C¹([0, 1])', icon: <PencilLine className="w-4 h-4" /> },
+    { path: '/td1/ex10', label: 'Exercice 10: Propriétés des s.e.v.', icon: <PencilLine className="w-4 h-4" /> },
+    { path: '/td1/ex11', label: 'Exercice 11: Constance sur un connexe', icon: <PencilLine className="w-4 h-4" /> },
+    { path: '/td1/ex12', label: 'Exercice 12: Non-connexité de GLn(R)', icon: <PencilLine className="w-4 h-4" /> },
+  ];
+
+  const currentCourse = location.pathname.startsWith('/metrics') 
+    ? 'metrics' 
+    : location.pathname.startsWith('/td1') 
+      ? 'td1' 
+      : 'topology';
 
   return (
     <header className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
       <nav className="mx-auto max-w-7xl px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
-          <Link to={`/${currentCourse}`} onClick={() => setIsOpen(false)} className="flex items-center gap-2">
-            <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-xl ${currentCourse === 'metrics' ? 'bg-indigo-600' : 'bg-blue-600'}`}>
-              {currentCourse === 'metrics' ? 'm' : 'τ'}
+          <Link to={`/${currentCourse === 'td1' ? 'td1/ex1' : currentCourse}`} onClick={() => setIsOpen(false)} className="flex items-center gap-2">
+            <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-xl ${
+              currentCourse === 'metrics' ? 'bg-indigo-600' : 
+              currentCourse === 'td1' ? 'bg-slate-900' : 'bg-blue-600'
+            }`}>
+              {currentCourse === 'metrics' ? 'm' : currentCourse === 'td1' ? 'ex' : 'τ'}
             </div>
             <span className="font-bold text-slate-900 tracking-tight">TopoLearn</span>
           </Link>
@@ -91,6 +125,8 @@ const Navbar: React.FC = () => {
             <Link to="/topology" className={`${currentCourse === 'topology' ? 'text-blue-600' : 'hover:text-slate-600'} transition-colors`}>Topology</Link>
             <div className="w-1 h-1 bg-slate-200 rounded-full" />
             <Link to="/metrics" className={`${currentCourse === 'metrics' ? 'text-indigo-600' : 'hover:text-slate-600'} transition-colors`}>Metrics</Link>
+            <div className="w-1 h-1 bg-slate-200 rounded-full" />
+            <Link to="/td1/ex1" className={`${currentCourse === 'td1' ? 'text-slate-900' : 'hover:text-slate-600'} transition-colors`}>TDs</Link>
           </div>
         </div>
 
@@ -135,6 +171,7 @@ const Navbar: React.FC = () => {
                 <div className="flex md:hidden items-center justify-around p-2 bg-slate-50 rounded-2xl mb-4 border border-slate-100">
                   <Link to="/topology" onClick={() => setIsOpen(false)} className={`flex-grow text-center py-2 text-[10px] font-bold uppercase rounded-xl transition-all ${currentCourse === 'topology' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-400'}`}>Topology</Link>
                   <Link to="/metrics" onClick={() => setIsOpen(false)} className={`flex-grow text-center py-2 text-[10px] font-bold uppercase rounded-xl transition-all ${currentCourse === 'metrics' ? 'bg-white shadow-sm text-indigo-600' : 'text-slate-400'}`}>Metrics</Link>
+                  <Link to="/td1/ex1" onClick={() => setIsOpen(false)} className={`flex-grow text-center py-2 text-[10px] font-bold uppercase rounded-xl transition-all ${currentCourse === 'td1' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-400'}`}>TDs</Link>
                 </div>
 
                 {currentCourse === 'topology' ? (
@@ -161,7 +198,7 @@ const Navbar: React.FC = () => {
                       </Link>
                     ))}
                   </>
-                ) : (
+                ) : currentCourse === 'metrics' ? (
                   <>
                     <p className="px-4 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Metric Spaces Course</p>
                     {metricLinks.map((link) => (
@@ -177,6 +214,30 @@ const Navbar: React.FC = () => {
                       >
                         <div className="flex items-center gap-3">
                           <div className={`p-2 rounded-lg ${isActive(link.path) ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-400'}`}>
+                            {link.icon}
+                          </div>
+                          <span className="font-bold text-xs">{link.label}</span>
+                        </div>
+                        {isActive(link.path) && <ChevronRight className="w-4 h-4" />}
+                      </Link>
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    <p className="px-4 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Exercise Solutions</p>
+                    {tdLinks.map((link) => (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all ${
+                          isActive(link.path) 
+                            ? 'bg-slate-100 text-slate-900' 
+                            : 'hover:bg-slate-50 text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className={`p-2 rounded-lg ${isActive(link.path) ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-400'}`}>
                             {link.icon}
                           </div>
                           <span className="font-bold text-xs">{link.label}</span>
@@ -233,6 +294,21 @@ function App() {
               <Route path="compactness" element={<MetricCompactPage />} />
               <Route path="preservation" element={<MetricCompactLebesgue />} />
               <Route path="completeness" element={<MetricCompletenessPage />} />
+            </Route>
+
+            <Route path="/td1">
+              <Route path="ex1" element={<TD1 />} />
+              <Route path="ex2" element={<TD1Ex2 />} />
+              <Route path="ex3" element={<TD1Ex3 />} />
+              <Route path="ex4" element={<TD1Ex4 />} />
+              <Route path="ex5" element={<TD1Ex5 />} />
+              <Route path="ex6" element={<TD1Ex6 />} />
+              <Route path="ex7" element={<TD1Ex7 />} />
+              <Route path="ex8" element={<TD1Ex8 />} />
+              <Route path="ex9" element={<TD1Ex9 />} />
+              <Route path="ex10" element={<TD1Ex10 />} />
+              <Route path="ex11" element={<TD1Ex11 />} />
+              <Route path="ex12" element={<TD1Ex12 />} />
             </Route>
           </Routes>
 
