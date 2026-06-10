@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Target, Layers } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { InlineMath } from './Math';
 
 const SetConvergenceVisualizer: React.FC = () => {
   const { t } = useLanguage();

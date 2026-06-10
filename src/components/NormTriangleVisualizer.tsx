@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { MousePointer2, Calculator, Info } from 'lucide-react';
 
+const ORIGIN = { x: 200, y: 200 };
+
 const NormTriangleVisualizer: React.FC = () => {
   const { language } = useLanguage();
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -12,8 +14,6 @@ const NormTriangleVisualizer: React.FC = () => {
   const [vecY, setVecY] = useState({ x: 50, y: -120 });
   const [isDraggingX, setIsDraggingX] = useState(false);
   const [isDraggingY, setIsDraggingY] = useState(false);
-
-  const ORIGIN = { x: 200, y: 200 };
 
   const content = {
     EN: {
@@ -41,7 +41,7 @@ const NormTriangleVisualizer: React.FC = () => {
   const norm = (v: { x: number, y: number }) => Math.sqrt(v.x * v.x + v.y * v.y);
   const normX = norm(vecX);
   const normY = norm(vecY);
-  const vecSum = { x: vecX.x + vecY.x, y: vecX.y + vecY.y };
+  const vecSum = useMemo(() => ({ x: vecX.x + vecY.x, y: vecX.y + vecY.y }), [vecX, vecY]);
   const normSum = normX + normY;
   const normRes = norm(vecSum);
 
@@ -127,7 +127,7 @@ const NormTriangleVisualizer: React.FC = () => {
     ctx.fillStyle = '#5b21b6';
     ctx.fillText('x + y', ORIGIN.x + vecSum.x + 10, ORIGIN.y + vecSum.y);
 
-  }, [vecX, vecY]);
+  }, [vecX, vecY, vecSum]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     const rect = canvasRef.current?.getBoundingClientRect();

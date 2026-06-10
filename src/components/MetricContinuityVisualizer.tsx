@@ -16,9 +16,9 @@ const MetricContinuityVisualizer: React.FC = () => {
   const getX = (val: number) => 100 + val * 50;
   const getY = (val: number) => 250 - val * 20;
 
-  const f = (x: number) => {
+  const f = useMemo(() => (x: number) => {
     return funcType === 'linear' ? x : (x * x) / 2;
-  };
+  }, [funcType]);
 
   const isBroken = useMemo(() => {
     // Check if function breaks the top/bottom boundary within the alpha width
@@ -30,7 +30,7 @@ const MetricContinuityVisualizer: React.FC = () => {
     const bottomLimit = centerVal - epsilon;
     
     return leftVal > topLimit || leftVal < bottomLimit || rightVal > topLimit || rightVal < bottomLimit;
-  }, [funcType, boxX]);
+  }, [f, boxX]);
 
   const generatePath = () => {
     const points = [];

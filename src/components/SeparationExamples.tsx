@@ -16,7 +16,7 @@ const SeparationExamples: React.FC = () => {
           status: "Always Separated",
           explanation: "Every single subset is open. If you pick two distinct points, they are their own open sets.",
           math: "\\mathcal{T}_d = \\mathcal{P}(E)",
-          proof: "V_x = \\{x\}, V_y = \\{y\} \\implies V_x \\cap V_y = \\emptyset"
+          proof: "V_x = \\{x\\}, V_y = \\{y\\} \\implies V_x \\cap V_y = \\emptyset"
         },
         {
           title: "Trivial Space",
@@ -50,7 +50,7 @@ const SeparationExamples: React.FC = () => {
           status: "Toujours séparé",
           explanation: "Chaque partie est un ouvert. Si vous choisissez deux points distincts, ils sont leurs propres ouverts.",
           math: "\\mathcal{T}_d = \\mathcal{P}(E)",
-          proof: "V_x = \\{x\}, V_y = \\{y\} \\implies V_x \\cap V_y = \\emptyset"
+          proof: "V_x = \\{x\\}, V_y = \\{y\\} \\implies V_x \\cap V_y = \\emptyset"
         },
         {
           title: "Espace grossier",

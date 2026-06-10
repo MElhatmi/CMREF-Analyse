@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BlockMath, InlineMath } from '../components/Math';
+import { InlineMath } from '../components/Math';
 import SetIntersectionVisualizer from '../components/SetIntersectionVisualizer';
 import { useLanguage } from '../context/LanguageContext';
 

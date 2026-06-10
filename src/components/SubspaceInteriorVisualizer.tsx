@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Target, Maximize, Ruler } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { InlineMath } from './Math';
 
 const SubspaceInteriorVisualizer: React.FC = () => {
   const { t } = useLanguage();

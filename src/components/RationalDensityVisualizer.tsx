@@ -6,6 +6,18 @@ import { useLanguage } from '../context/LanguageContext';
 
 const PI = Math.PI;
 
+const findRational = (epsilon: number) => {
+  const low = PI - epsilon;
+  const high = PI + epsilon;
+  for (let q = 1; q < 5000; q++) {
+    const p = Math.floor(low * q) + 1;
+    if (p / q < high) {
+      return { p, q, val: p / q };
+    }
+  }
+  return { p: 355, q: 113, val: 355 / 113 };
+};
+
 const RationalDensityVisualizer: React.FC = () => {
   const [epsilon, setEpsilon] = useState(0.1);
   const { language } = useLanguage();
@@ -37,17 +49,7 @@ const RationalDensityVisualizer: React.FC = () => {
 
   const curr = content[language];
 
-  const rational = useMemo(() => {
-    const low = PI - epsilon;
-    const high = PI + epsilon;
-    for (let q = 1; q < 5000; q++) {
-      const p = Math.floor(low * q) + 1;
-      if (p / q < high) {
-        return { p, q, val: p / q };
-      }
-    }
-    return { p: 355, q: 113, val: 355/113 };
-  }, [epsilon]);
+  const rational = useMemo(() => findRational(epsilon), [epsilon]);
 
   return (
     <section className="bg-slate-50 py-24 px-6">

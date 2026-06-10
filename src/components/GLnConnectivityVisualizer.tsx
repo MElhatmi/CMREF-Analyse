@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Target, Search, ShieldAlert } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { InlineMath } from './Math';
 
 const GLnConnectivityVisualizer: React.FC = () => {
   const { t } = useLanguage();

@@ -1,14 +1,14 @@
-import React, { createContext, useContext, useState, type ReactNode, useEffect } from 'react';
+import { createContext, useContext } from 'react';
 
-type Language = 'EN' | 'FR';
+export type Language = 'EN' | 'FR';
 
-interface LanguageContextType {
+export interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
 }
 
-const translations: Record<Language, Record<string, string>> = {
+export const translations: Record<Language, Record<string, string>> = {
   EN: {
     // Navigation
     'nav.home': 'Home',
@@ -935,33 +935,7 @@ const translations: Record<Language, Record<string, string>> = {
   }
 };
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<Language>(() => {
-    const saved = localStorage.getItem('topo_lang');
-    return (saved === 'FR' || saved === 'EN') ? saved : 'EN';
-  });
-
-  const setLanguage = (newLang: Language) => {
-    setLanguageState(newLang);
-    localStorage.setItem('topo_lang', newLang);
-  };
-
-  const t = (key: string) => {
-    return translations[language][key] || key;
-  };
-
-  useEffect(() => {
-    document.documentElement.lang = language.toLowerCase();
-  }, [language]);
-
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
-};
+export const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const useLanguage = () => {
   const context = useContext(LanguageContext);

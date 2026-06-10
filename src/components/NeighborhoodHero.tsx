@@ -17,7 +17,7 @@ const NeighborhoodHero: React.FC = () => {
       crucialDesc: "A neighborhood does not have to be an open set itself! It just needs to be \"thick enough\" to completely swallow an open buffer zone around the point.",
       exampleTitle: "Valid Example",
       exampleDesc: "In R, [-1, 1] is a neighborhood of 0.",
-      exampleLogic: "Because: 0 \in ]-0.5, 0.5[ \subset [-1, 1]",
+      exampleLogic: "Because: 0 \\in ]-0.5, 0.5[ \\subset [-1, 1]",
       counterTitle: "Counter-Example",
       counterDesc: "In R, [0, 1] is NOT a neighborhood of 0.",
       counterLogic: "Reason: Any open interval around 0 spills into negatives."
@@ -32,7 +32,7 @@ const NeighborhoodHero: React.FC = () => {
       crucialDesc: "Un voisinage n'a pas besoin d'être un ouvert lui-même ! Il doit juste être assez « épais » pour englober une zone tampon ouverte autour du point.",
       exampleTitle: "Exemple Valide",
       exampleDesc: "Dans R, [-1, 1] est un voisinage de 0.",
-      exampleLogic: "Car : 0 \in ]-0.5, 0.5[ \subset [-1, 1]",
+      exampleLogic: "Car : 0 \\in ]-0.5, 0.5[ \\subset [-1, 1]",
       counterTitle: "Contre-Exemple",
       counterDesc: "Dans R, [0, 1] n'est PAS un voisinage de 0.",
       counterLogic: "Raison : Tout intervalle ouvert autour de 0 déborde dans les négatifs."

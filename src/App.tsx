@@ -47,7 +47,8 @@ import TD1Ex9 from './pages/TD1Ex9';
 import TD1Ex10 from './pages/TD1Ex10';
 import TD1Ex11 from './pages/TD1Ex11';
 import TD1Ex12 from './pages/TD1Ex12';
-import { LanguageProvider, useLanguage } from './context/LanguageContext';
+import { LanguageProvider } from './context/LanguageProvider';
+import { useLanguage } from './context/LanguageContext';
 
 // Component to handle scroll reset on route change
 const ScrollToTop = () => {

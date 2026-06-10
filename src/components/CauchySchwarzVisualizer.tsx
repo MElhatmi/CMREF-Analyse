@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { Info, Zap } from 'lucide-react';
 
+const ORIGIN = { x: 200, y: 200 };
+
 const CauchySchwarzVisualizer: React.FC = () => {
   const { language } = useLanguage();
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -11,8 +13,6 @@ const CauchySchwarzVisualizer: React.FC = () => {
   const [vecV, setVecV] = useState({ x: 150, y: 0 });
   const [isDraggingU, setIsDraggingU] = useState(false);
   const [isDraggingV, setIsDraggingV] = useState(false);
-
-  const ORIGIN = { x: 200, y: 200 };
 
   const content = {
     EN: {
@@ -126,7 +126,7 @@ const CauchySchwarzVisualizer: React.FC = () => {
     ctx.fillStyle = '#991b1b';
     ctx.fillText('v', ORIGIN.x + vecV.x + 10, ORIGIN.y + vecV.y);
 
-  }, [vecU, vecV]);
+  }, [vecU, vecV, normV]);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     const rect = canvasRef.current?.getBoundingClientRect();

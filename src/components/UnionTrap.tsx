@@ -1,6 +1,6 @@
 import React from 'react';
 import { BlockMath } from './Math';
-import { XCircle, AlertTriangle, Infinity } from 'lucide-react';
+import { XCircle, AlertTriangle, Infinity as InfinityIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -91,7 +91,7 @@ const UnionTrap: React.FC = () => {
             <div className="pt-8 border-t border-white/10 relative">
               <div className="flex items-center gap-4 mb-4">
                 <div className="h-8 w-8 bg-amber-500 rounded-lg flex items-center justify-center text-slate-900">
-                  <Infinity className="w-5 h-5" />
+                  <InfinityIcon className="w-5 h-5" />
                 </div>
                 <h4 className="text-white font-bold">{curr.infiniteResult}</h4>
               </div>

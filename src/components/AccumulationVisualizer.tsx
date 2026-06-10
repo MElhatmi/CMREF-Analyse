@@ -183,13 +183,13 @@ const AccumulationVisualizer: React.FC = () => {
            <div className="flex items-center gap-3">
               <div className="w-4 h-1 bg-emerald-500 rounded-full" />
               <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">
-                {curr.isolatedMath} <InlineMath math={`\exists V, V \cap A = \{${target}\}`} />
+                {curr.isolatedMath} <InlineMath math={`\\exists V, V \\cap A = \\{${target}\\}`} />
               </span>
            </div>
            <div className="flex items-center gap-3">
               <div className="w-4 h-1 bg-amber-500 rounded-full" />
               <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">
-                {curr.accumulationMath} <InlineMath math={`\forall V, V \cap (A \setminus \{${target}\}) \neq \emptyset`} />
+                {curr.accumulationMath} <InlineMath math={`\\forall V, V \\cap (A \\setminus \\{${target}\\}) \\neq \\emptyset`} />
               </span>
            </div>
         </div>

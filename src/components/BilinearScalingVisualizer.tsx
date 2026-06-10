@@ -12,7 +12,7 @@ const BilinearScalingVisualizer: React.FC = () => {
   const content = {
     EN: {
       title: "Interactive Visualizer: Bilinear Scaling Simulator",
-      subtitle: "Verify the bounding inequality ||f(x,y)|| \le K ||x|| ||y|| using the inner product (where K=1).",
+      subtitle: "Verify the bounding inequality ||f(x,y)|| \\le K ||x|| ||y|| using the inner product (where K=1).",
       scaleX: "Scale Vector x (\u03B1)",
       scaleY: "Scale Vector y (\u03B2)",
       calcNormX: "||\u03B1x||",

@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { Combine } from 'lucide-react';
 
+// Simple seeded random to ensure purity during render
+const seededRandom = (seed: number) => {
+  let s = seed;
+  return () => {
+    s = (s * 16807) % 2147483647;
+    return (s - 1) / 2147483646;
+  };
+};
+
 const MetricNeighborhoodsHero: React.FC = () => {
   const { t } = useLanguage();
+
+  const dots = useMemo(() => {
+    const rnd = seededRandom(123);
+    return Array.from({ length: 20 }).map(() => ({
+      x: 100 + rnd() * 200,
+      y: 80 + rnd() * 140
+    }));
+  }, []);
 
   return (
     <section className="relative overflow-hidden bg-white py-16 sm:py-24">
@@ -60,11 +77,11 @@ const MetricNeighborhoodsHero: React.FC = () => {
                  <text x="250" y="200" className="text-xs font-bold fill-indigo-600 italic">Neighborhood V</text>
                  
                  {/* Countable Skeletons (Dots) */}
-                 {Array.from({ length: 20 }).map((_, i) => (
+                 {dots.map((dot, i) => (
                     <motion.circle 
                       key={i}
-                      cx={100 + Math.random() * 200}
-                      cy={80 + Math.random() * 140}
+                      cx={dot.x}
+                      cy={dot.y}
                       r="1.5"
                       fill="#94a3b8"
                       initial={{ opacity: 0 }}

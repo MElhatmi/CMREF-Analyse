@@ -158,17 +158,17 @@ const TriangleInequalityVisualizer: React.FC = () => {
                         />
 
                         {/* Nodes */}
-                        {[
+                        {([
                           { id: 'A', pt: a },
                           { id: 'B', pt: b },
                           { id: 'C', pt: c }
-                        ].map(node => (
+                        ] as const).map(node => (
                           <circle 
                             key={node.id}
                             cx={node.pt.x} cy={node.pt.y} r="0.4"
                             fill={dragging === node.id ? '#6366f1' : '#1e293b'}
                             className="cursor-move transition-colors"
-                            onMouseDown={() => setDragging(node.id as any)}
+                            onMouseDown={() => setDragging(node.id)}
                           />
                         ))}
                      </g>

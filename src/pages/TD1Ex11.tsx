@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BlockMath, InlineMath } from '../components/Math';
+import { InlineMath } from '../components/Math';
 import PathConnectedVisualizer from '../components/PathConnectedVisualizer';
 import { useLanguage } from '../context/LanguageContext';
 

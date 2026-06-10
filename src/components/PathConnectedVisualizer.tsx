@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Target, Search, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { InlineMath } from './Math';
 
 const PathConnectedVisualizer: React.FC = () => {
   const { t } = useLanguage();

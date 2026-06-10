@@ -43,7 +43,7 @@ const CauchySequenceVisualizer: React.FC = () => {
 
             {/* Bars representing f(n) */}
             <div className="flex w-full items-end justify-between h-full relative z-20">
-              {points.map((p, i) => (
+              {points.map((p) => (
                 <div key={p.n} className="flex flex-col items-center group relative h-full justify-end pb-8" style={{ width: `${100/nTerms}%` }}>
                   <motion.div 
                     initial={{ height: 0 }}

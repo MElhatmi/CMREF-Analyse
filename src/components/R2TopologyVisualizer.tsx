@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Target, Search, Maximize } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { InlineMath } from './Math';
 
 const R2TopologyVisualizer: React.FC = () => {
   const { t } = useLanguage();

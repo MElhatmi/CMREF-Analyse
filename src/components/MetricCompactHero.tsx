@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { Box } from 'lucide-react';
 
+// Simple seeded random to ensure purity during render
+const seededRandom = (seed: number) => {
+  let s = seed;
+  return () => {
+    s = (s * 16807) % 2147483647;
+    return (s - 1) / 2147483646;
+  };
+};
+
 const MetricCompactHero: React.FC = () => {
   const { t } = useLanguage();
+
+  const points = useMemo(() => {
+    const rnd = seededRandom(42);
+    return Array.from({ length: 40 }).map(() => ({
+      angle: rnd() * Math.PI * 2,
+      r: rnd() * 30
+    }));
+  }, []);
 
   return (
     <section className="relative overflow-hidden bg-white py-16 sm:py-24">
@@ -45,14 +62,12 @@ const MetricCompactHero: React.FC = () => {
                  <rect x="100" y="50" width="200" height="200" rx="20" fill="rgba(99, 102, 241, 0.05)" stroke="#6366f1" strokeWidth="2" />
                  
                  {/* Trapped points clumping */}
-                 {Array.from({ length: 40 }).map((_, i) => {
-                    const angle = Math.random() * Math.PI * 2;
-                    const r = Math.random() * 30;
+                 {points.map((p, i) => {
                     return (
                       <motion.circle 
                         key={i}
-                        cx={200 + Math.cos(angle) * r}
-                        cy={150 + Math.sin(angle) * r}
+                        cx={200 + Math.cos(p.angle) * p.r}
+                        cy={150 + Math.sin(p.angle) * p.r}
                         r="2"
                         fill="#475569"
                         initial={{ opacity: 0 }}
