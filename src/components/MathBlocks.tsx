@@ -71,3 +71,23 @@ export const Property: React.FC<BlockProps> = ({ title, children }) => (
     <div className="text-slate-700 leading-relaxed text-sm">{children}</div>
   </div>
 );
+
+export const Exercise: React.FC<BlockProps> = ({ title, children }) => (
+  <div className="my-8 bg-purple-50/30 rounded-3xl border border-purple-200 p-8 shadow-sm">
+    <div className="flex items-center gap-3 mb-4">
+      <span className="bg-purple-600 text-white px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest">Exercise</span>
+      <h4 className="text-lg font-bold text-purple-900">{title}</h4>
+    </div>
+    <div className="text-slate-700 leading-relaxed text-sm">{children}</div>
+  </div>
+);
+
+export const Corollary: React.FC<BlockProps> = ({ title, children }) => (
+  <div className="my-8 bg-indigo-50/20 rounded-3xl border border-indigo-200 border-dashed p-8 shadow-sm">
+    <div className="flex items-center gap-3 mb-4">
+      <span className="bg-indigo-400 text-white px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-widest">Corollary</span>
+      <h4 className="text-lg font-bold text-indigo-800">{title}</h4>
+    </div>
+    <div className="text-slate-700 leading-relaxed text-sm italic">{children}</div>
+  </div>
+);

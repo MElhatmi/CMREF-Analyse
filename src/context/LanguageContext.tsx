@@ -882,7 +882,7 @@ const translations: Record<Language, Record<string, string>> = {
     'td1.viz.sep.buffer_title': 'Le tampon de sécurité',
     'td1.viz.sep.buffer_desc': 'Puisque F et G sont fermés et disjoints, la distance d\'un point de F à l\'ensemble G est strictement positive. On peut donc toujours glisser une "bulle" autour de chaque ensemble.',
     'td1.viz.sep.normal_title': 'L\'Espace Normal',
-    'td1.viz.sep.normal_desc': 'Cette construction montre que les espaces métriques sont "normaux" : on peut séparer n'importe quel couple de fermés disjoints par des ouverts disjoints.',
+    'td1.viz.sep.normal_desc': 'Cette construction montre que les espaces métriques sont "normaux" : on peut séparer n\'importe quel couple de fermés disjoints par des ouverts disjoints.',
 
     'td1.viz.norm.title': 'Explosion de la Norme Euclidienne',
     'td1.viz.norm.subtitle': 'Observez pourquoi N et ||.||∞ ne sont pas équivalentes.',
@@ -902,7 +902,7 @@ const translations: Record<Language, Record<string, string>> = {
     'td1.viz.sub_int.state_fill': 'État : F = E',
     'td1.viz.sub_int.state_fill_desc': 'Par homothétie, F "gonfle" jusqu\'à remplir tout l\'espace.',
     'td1.viz.sub_int.homothety_title': 'Invariance par Homothety',
-    'td1.viz.sub_int.homothety_desc': 'Si un s.e.v. contient une petite bille, il contient par linéarité toutes ses versions agrandies. Une bille infiniment grande finit par absorber n'importe quel vecteur x de l\'espace.',
+    'td1.viz.sub_int.homothety_desc': 'Si un s.e.v. contient une petite bille, il contient par linéarité toutes ses versions agrandies. Une bille infiniment grande finit par absorber n\'importe quel vecteur x de l\'espace.',
     'td1.viz.sub_int.density_title': 'L\'Hypothèse de Densité',
     'td1.viz.sub_int.density_desc': 'Pour un hyperplan, ne pas être fermé signifie être "troué" partout. Son adhérence est alors obligée d\'être l\'espace complet.',
     'td1.viz.sub_int.vector_x': 'Vecteur x quelconque',

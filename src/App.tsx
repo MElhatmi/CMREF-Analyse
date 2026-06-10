@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, Navigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight, Home, Map, Target, ZoomIn, ShieldCheck, Globe, Combine, Activity, Box, MapPin, Link2, PencilLine, Languages, Ruler, Circle, ShieldAlert, Footprints, Sparkles, Network, Wind } from 'lucide-react';
+import { Menu, X, ChevronRight, Home, Map, Target, ZoomIn, ShieldCheck, Globe, Combine, Activity, Box, MapPin, Link2, PencilLine, Languages, Ruler, Circle, ShieldAlert, Footprints, Sparkles, Network, Wind, MoveUpRight, Compass, Shapes, Waves, Anchor, Scale } from 'lucide-react';
 import LandingPage from './pages/LandingPage';
 import TopologyBasics from './pages/TopologyBasics';
 import SetConcepts from './pages/SetConcepts';
@@ -25,6 +25,16 @@ import MetricContinuityPage from './pages/MetricContinuityPage';
 import MetricCompactPage from './pages/MetricCompactPage';
 import MetricCompactLebesgue from './pages/MetricCompactLebesgue';
 import MetricCompletenessPage from './pages/MetricCompletenessPage';
+import NormedIntuition from './pages/NormedIntuition';
+import InnerProductPage from './pages/InnerProductPage';
+import KnNormsPage from './pages/KnNormsPage';
+import FunctionNormsPage from './pages/FunctionNormsPage';
+import LimitsEVNPage from './pages/LimitsEVNPage';
+import BoundedOperatorsPage from './pages/BoundedOperatorsPage';
+import BilinearMapsPage from './pages/BilinearMapsPage';
+import FiniteDimensionsPage from './pages/FiniteDimensionsPage';
+import BanachPage from './pages/BanachPage';
+import NormEquivalencePage from './pages/NormEquivalencePage';
 import TD1 from './pages/TD1';
 import TD1Ex2 from './pages/TD1Ex2';
 import TD1Ex3 from './pages/TD1Ex3';
@@ -86,6 +96,19 @@ const Navbar: React.FC = () => {
     { path: '/metrics/completeness', label: t('nav.metrics.complete'), icon: <Network className="w-4 h-4" /> },
   ];
 
+  const normedLinks = [
+    { path: '/normed/intuition', label: '1. Intuition of Magnitude', icon: <MoveUpRight className="w-4 h-4" /> },
+    { path: '/normed/inner-product', label: '2. Inner Products', icon: <Compass className="w-4 h-4" /> },
+    { path: '/normed/kn-norms', label: '3. The Zoo of Norms in Kⁿ', icon: <Shapes className="w-4 h-4" /> },
+    { path: '/normed/function-norms', label: '4. Norms on Functions', icon: <Waves className="w-4 h-4" /> },
+    { path: '/normed/limits', label: '5. Limits & Singularities', icon: <Target className="w-4 h-4" /> },
+    { path: '/normed/bounded-operators', label: '6. Bounded Operators', icon: <Activity className="w-4 h-4" /> },
+    { path: '/normed/bilinear-maps', label: '7. Bilinear Maps', icon: <Combine className="w-4 h-4" /> },
+    { path: '/normed/finite-dim', label: '8. Finite Dimensions', icon: <ShieldCheck className="w-4 h-4" /> },
+    { path: '/normed/banach', label: '9. Banach Spaces', icon: <Anchor className="w-4 h-4" /> },
+    { path: '/normed/equivalence', label: '10. Norm Equivalence', icon: <Scale className="w-4 h-4" /> },
+  ];
+
   const tdLinks = [
     { path: '/td1/ex1', label: 'Exercice 1: Distance Discrète', icon: <PencilLine className="w-4 h-4" /> },
     { path: '/td1/ex2', label: 'Exercice 2: Complétude de (R, δ)', icon: <PencilLine className="w-4 h-4" /> },
@@ -105,7 +128,9 @@ const Navbar: React.FC = () => {
     ? 'metrics' 
     : location.pathname.startsWith('/td1') 
       ? 'td1' 
-      : 'topology';
+      : location.pathname.startsWith('/normed')
+        ? 'normed'
+        : 'topology';
 
   return (
     <header className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
@@ -114,9 +139,10 @@ const Navbar: React.FC = () => {
           <Link to={`/${currentCourse === 'td1' ? 'td1/ex1' : currentCourse}`} onClick={() => setIsOpen(false)} className="flex items-center gap-2">
             <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-xl ${
               currentCourse === 'metrics' ? 'bg-indigo-600' : 
+              currentCourse === 'normed' ? 'bg-purple-600' :
               currentCourse === 'td1' ? 'bg-slate-900' : 'bg-blue-600'
             }`}>
-              {currentCourse === 'metrics' ? 'm' : currentCourse === 'td1' ? 'ex' : 'τ'}
+              {currentCourse === 'metrics' ? 'm' : currentCourse === 'normed' ? 'N' : currentCourse === 'td1' ? 'ex' : 'τ'}
             </div>
             <span className="font-bold text-slate-900 tracking-tight">TopoLearn</span>
           </Link>
@@ -125,6 +151,8 @@ const Navbar: React.FC = () => {
             <Link to="/topology" className={`${currentCourse === 'topology' ? 'text-blue-600' : 'hover:text-slate-600'} transition-colors`}>Topology</Link>
             <div className="w-1 h-1 bg-slate-200 rounded-full" />
             <Link to="/metrics" className={`${currentCourse === 'metrics' ? 'text-indigo-600' : 'hover:text-slate-600'} transition-colors`}>Metrics</Link>
+            <div className="w-1 h-1 bg-slate-200 rounded-full" />
+            <Link to="/normed/intuition" className={`${currentCourse === 'normed' ? 'text-purple-600' : 'hover:text-slate-600'} transition-colors`}>Normed</Link>
             <div className="w-1 h-1 bg-slate-200 rounded-full" />
             <Link to="/td1/ex1" className={`${currentCourse === 'td1' ? 'text-slate-900' : 'hover:text-slate-600'} transition-colors`}>TDs</Link>
           </div>
@@ -171,6 +199,7 @@ const Navbar: React.FC = () => {
                 <div className="flex md:hidden items-center justify-around p-2 bg-slate-50 rounded-2xl mb-4 border border-slate-100">
                   <Link to="/topology" onClick={() => setIsOpen(false)} className={`flex-grow text-center py-2 text-[10px] font-bold uppercase rounded-xl transition-all ${currentCourse === 'topology' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-400'}`}>Topology</Link>
                   <Link to="/metrics" onClick={() => setIsOpen(false)} className={`flex-grow text-center py-2 text-[10px] font-bold uppercase rounded-xl transition-all ${currentCourse === 'metrics' ? 'bg-white shadow-sm text-indigo-600' : 'text-slate-400'}`}>Metrics</Link>
+                  <Link to="/normed/intuition" onClick={() => setIsOpen(false)} className={`flex-grow text-center py-2 text-[10px] font-bold uppercase rounded-xl transition-all ${currentCourse === 'normed' ? 'bg-white shadow-sm text-purple-600' : 'text-slate-400'}`}>Normed</Link>
                   <Link to="/td1/ex1" onClick={() => setIsOpen(false)} className={`flex-grow text-center py-2 text-[10px] font-bold uppercase rounded-xl transition-all ${currentCourse === 'td1' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-400'}`}>TDs</Link>
                 </div>
 
@@ -214,6 +243,30 @@ const Navbar: React.FC = () => {
                       >
                         <div className="flex items-center gap-3">
                           <div className={`p-2 rounded-lg ${isActive(link.path) ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-400'}`}>
+                            {link.icon}
+                          </div>
+                          <span className="font-bold text-xs">{link.label}</span>
+                        </div>
+                        {isActive(link.path) && <ChevronRight className="w-4 h-4" />}
+                      </Link>
+                    ))}
+                  </>
+                ) : currentCourse === 'normed' ? (
+                  <>
+                    <p className="px-4 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Normed Spaces Course</p>
+                    {normedLinks.map((link) => (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all ${
+                          isActive(link.path) 
+                            ? 'bg-purple-50 text-purple-600' 
+                            : 'hover:bg-slate-50 text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className={`p-2 rounded-lg ${isActive(link.path) ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-400'}`}>
                             {link.icon}
                           </div>
                           <span className="font-bold text-xs">{link.label}</span>
@@ -294,6 +347,20 @@ function App() {
               <Route path="compactness" element={<MetricCompactPage />} />
               <Route path="preservation" element={<MetricCompactLebesgue />} />
               <Route path="completeness" element={<MetricCompletenessPage />} />
+            </Route>
+
+            <Route path="/normed">
+              <Route index element={<Navigate to="/normed/intuition" replace />} />
+              <Route path="intuition" element={<NormedIntuition />} />
+              <Route path="inner-product" element={<InnerProductPage />} />
+              <Route path="kn-norms" element={<KnNormsPage />} />
+              <Route path="function-norms" element={<FunctionNormsPage />} />
+              <Route path="limits" element={<LimitsEVNPage />} />
+              <Route path="bounded-operators" element={<BoundedOperatorsPage />} />
+              <Route path="bilinear-maps" element={<BilinearMapsPage />} />
+              <Route path="finite-dim" element={<FiniteDimensionsPage />} />
+              <Route path="banach" element={<BanachPage />} />
+              <Route path="equivalence" element={<NormEquivalencePage />} />
             </Route>
 
             <Route path="/td1">
