@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Target, Search, Maximize } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const R2TopologyVisualizer: React.FC = () => {
